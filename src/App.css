@@ -1,0 +1,19 @@
+.App {
+    background-color: #48454a;
+    height: 100vh;
+}
+
+.Tea {
+    padding: 40px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100vw;
+    overflow: scroll;
+}
+
+.Tea::-webkit-scrollbar {
+    display: none;
+}

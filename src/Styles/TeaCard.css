@@ -1,0 +1,30 @@
+.TeaCard {
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 250px;
+    min-width: 475px;
+    background-color: #d3dbb5;
+    background: linear-gradient(-90deg, #969f77, #d3dbb5);
+}
+
+.TeaCard .Image {
+    border-bottom: 2px solid black;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .1);
+    /* background-image: url('../Assets/test-tea.png'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 45%;
+}
+
+.TeaCard .Description {
+    padding-block-start: 15px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 15px;
+}

@@ -1,0 +1,21 @@
+.Navbar {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 20px;
+    padding-inline: 40px;
+    background-color: #1f1f1f;
+    height: 100px;
+}
+
+.Navbar img {
+    width: 75px;
+    background-color: transparent;
+}
+
+.Navbar h1 {
+    font-size: 60px;
+    color: #5caa48 !important;
+    background-color: transparent;
+}
