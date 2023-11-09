@@ -1,5 +1,5 @@
 .BrewTimerButton {
-    position: absolute;
+    position: fixed;
     bottom: 4%;
     right: 2%;
     border: 1px solid white;

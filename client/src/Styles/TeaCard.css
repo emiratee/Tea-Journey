@@ -5,8 +5,8 @@
     text-align: center;
     border: 2px solid black;
     border-radius: 10px;
-    height: 250px;
-    min-width: 475px;
+    height: 150px;
+    width: 350px;
     background-color: #d3dbb5;
     background: linear-gradient(-90deg, #969f77, #d3dbb5);
 }
@@ -18,13 +18,14 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    border-radius: 10px 10px 0 0;
     width: 100%;
-    height: 45%;
+    height: 60px;
 }
 
 .TeaCard .Description {
-    padding-block-start: 15px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    row-gap: 15px;
+    row-gap: 10px;
+    max-height: 50px;
 }

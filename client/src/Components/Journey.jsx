@@ -6,7 +6,7 @@ import Information from './Information/Information';
 
 const Journey = () => {
   return (
-    <div className="Frame">
+    <div className="Frame-Journey">
       <div className="Journey">
         <div className="Title">
           <h1>My Journey</h1>

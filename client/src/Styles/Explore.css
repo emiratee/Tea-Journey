@@ -1,7 +1,32 @@
-.Frame {
+.Frame-Explore {
     border: 3px solid #ffffff;
     border-radius: 10px;
     width: calc(100% - 80px);
-    height: 350px;
+    height: 500px;
     margin: 40px;
+}
+
+.Explore .Title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-inline-start: 15px;
+}
+
+.Explore .Title img {
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+.Explore .Title h1 {
+    color: #fff;
+    padding: 20px;
+}
+
+.Explore .Cards .Card {
+    padding-inline: 30px;
+    display: grid !important;
+    grid-template-columns: repeat(3, 2fr);
+    column-gap: 30px;
+    row-gap: 50px;
 }
