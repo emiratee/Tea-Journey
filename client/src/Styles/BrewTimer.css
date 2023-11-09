@@ -27,7 +27,6 @@
     border-radius: 10px;
     background-color: #d7d9d7;
     position: absolute;
-    display: flex;
     flex-flow: column nowrap;
     text-align: center;
     bottom: 4%;
@@ -127,4 +126,13 @@
 
 .TeaTimer h4 {
     padding-block-start: 15px;
+}
+
+.TeaTimer .TimerInformation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding-inline-start: 30%;
 }

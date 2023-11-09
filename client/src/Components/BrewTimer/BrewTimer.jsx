@@ -21,10 +21,7 @@ const BrewTimer = () => {
             const data = await getAllFunfacts();
             setFunfacts(data);
             setTrigger(!trigger)
-            // setFunfact('')
         })();
-        // getAllFunfacts()
-        // .then(data=>setFunfacts(data))
     }, []);
 
     useEffect(() => {
@@ -38,9 +35,12 @@ const BrewTimer = () => {
 
     }, [trigger, funfact]);
 
-    function toggleTimer(e) {
-        e.preventDefault();
-        console.log('toggle');
+    function togglePopUp() {
+        if (document.querySelector('.BrewTimer').style.display === 'none') {
+            document.querySelector('.BrewTimer').style.display = 'flex'
+        } else {
+            document.querySelector('.BrewTimer').style.display = 'none'
+        }
     }
 
     function searchTea(name) {
@@ -71,6 +71,7 @@ const BrewTimer = () => {
         const interval = setInterval(() => {
             if (seconds === 0) {
                 clearInterval(interval);
+                document.querySelector('.Timer').innerHTML = '0:00'
             } else {
                 const minutesDisplay = Math.floor(seconds / 60);
                 const secondsDisplay = seconds % 60;
@@ -79,7 +80,7 @@ const BrewTimer = () => {
             }
         }, 1000);
 
-       setCurrentInterval(interval);
+        setCurrentInterval(interval);
         e.currentTarget.innerText = 'Reset';
     }
 
@@ -93,9 +94,9 @@ const BrewTimer = () => {
     return (
         <>
             <div className='BrewTimerButton'>
-                <img src={Watch} alt="Watch" onClick={toggleTimer} />
+                <img src={Watch} alt="Watch" onClick={togglePopUp} />
             </div>
-            <div className="BrewTimer">
+            <div className="BrewTimer" style={{ display: 'none' }}>
                 {!selectedTea && (
                     <>
                         <h1>Brew Timer</h1>
@@ -118,10 +119,13 @@ const BrewTimer = () => {
                                 <img src={Back} alt="Back" onClick={back} />
                             </div>
                             <div className="Close">
-                                <img className='Close' src={Close} alt="Close" />
+                                <img src={Close} alt="Close" onClick={togglePopUp} />
                             </div>
                             <div className="TeaTimer">
-                                <h1 className="Timer">{renderTimer(selectedTea.brewTime)}</h1>
+                                <div className="TimerInformation">
+                                    <h1 className="Timer">{renderTimer(selectedTea.brewTime)}</h1>
+                                    <span>@ {selectedTea.temperature}</span>
+                                </div>
                                 <button type="submit" name='button' onClick={toggleTimer}>Start</button>
                                 <h4 className="Hint">{funfact}</h4>
                             </div>
