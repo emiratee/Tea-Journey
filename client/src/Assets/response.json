@@ -1,6 +1,5 @@
 [
     {
-        "_id": "63092102a643c85c74b00e6e",
         "name": "Black Tea",
         "slug": "black",
         "altnames": "Red Tea",
@@ -31,7 +30,6 @@
         "tasteDescription": "Creamy, milky, floral, and slightly buttery."
     },
     {
-        "_id": "63092102a643c85c74b00e71",
         "name": "White Tea",
         "slug": "white",
         "caffeine": "Time/Temperature Based",
@@ -45,7 +43,6 @@
         "tasteDescription": "Floral, fresh, fruity, with a hint of cucumber or melon."
     },
     {
-        "_id": "63092102a643c85c74b00e72",
         "name": "Assam Tea",
         "slug": "assam",
         "altnames": "",
@@ -61,7 +58,6 @@
         "tasteDescription": "The flavor can range from brisk, smoky, earthy, musky, and strong to a lighter cup with chocolate, cocoa, or even sweet and spicy notes"
     },
     {
-        "_id": "63092102a643c85c74b00e73",
         "name": "Darjeeling Tea",
         "slug": "darjeeling",
         "altnames": "",
@@ -77,7 +73,6 @@
         "tasteDescription": "Musky-sweet tasting notes similar to muscat wine"
     },
     {
-        "_id": "63092102a643c85c74b00e75",
         "name": "Keemun",
         "slug": "keemun",
         "altnames": "Qimen Red Tea",
@@ -93,7 +88,6 @@
         "tasteDescription": "Smooth, fruity, malty, unsweetened cocoa"
     },
     {
-        "_id": "63092102a643c85c74b00e74",
         "name": "Lapsang Souchong",
         "slug": "lapsangsouchong",
         "altnames": "Smoked Tea, Smoky Souchong",
@@ -109,7 +103,6 @@
         "tasteDescription": "Sweet, piney, smoky"
     },
     {
-        "_id": "63092102a643c85c74b00e76",
         "name": "Dianhong Tea",
         "slug": "dianhong",
         "altnames": "Yunnan Red Tea",
@@ -125,7 +118,6 @@
         "tasteDescription": "Sweet, floral, and honey-like, though tends to be stronger and more bitter than other red teas"
     },
     {
-        "_id": "63092102a643c85c74b00e77",
         "name": "Sencha Tea",
         "slug": "sencha",
         "altnames": "Steeped Tea",
@@ -141,7 +133,6 @@
         "tasteDescription": "Fresh, herbal, or grassy flavor, which can have varying vegetal grassy notes depending on how long it is steeped."
     },
     {
-        "_id": "63092102a643c85c74b00e78",
         "name": "Matcha Tea",
         "slug": "matcha",
         "altnames": "",
@@ -157,7 +148,6 @@
         "tasteDescription": "Vegetal grassy notes, natural sweet nuttiness, a touch of bitterness with a pleasant savory ending"
     },
     {
-        "_id": "63092102a643c85c74b00e79",
         "name": "Bancha",
         "slug": "bancha",
         "altnames": "",
@@ -173,7 +163,6 @@
         "tasteDescription": "Mild, earthy grassiness, with dry, toasty notes with less of a deeply vegetal, umami flavor"
     },
     {
-        "_id": "63092102a643c85c74b00e7a",
         "name": "Gyokuro",
         "slug": "gyokuro",
         "altnames": "Jade Dew, Pearl Dew",
@@ -189,7 +178,6 @@
         "tasteDescription": "Very full-bodied, with a taste reminiscent of seaweed and grasses, followed by an intense sweetness"
     },
     {
-        "_id": "63092102a643c85c74b00e7b",
         "name": "Kukicha",
         "slug": "kukicha",
         "altnames": "Bōcha, Twig tea, Stalk tea",
@@ -205,7 +193,6 @@
         "tasteDescription": "Mildly nutty and slightly creamy sweet flavor"
     },
     {
-        "_id": "63092102a643c85c74b00e7d",
         "name": "Hojicha",
         "slug": "hojicha",
         "altnames": "",
@@ -221,7 +208,6 @@
         "tasteDescription": "Naturally sweet taste and smoky flavor with distinct notes of cocoa"
     },
     {
-        "_id": "63092102a643c85c74b00e6f",
         "name": "Green Tea",
         "slug": "green",
         "image": "https://www.foehrerteekontor.de/media/65/53/85/1688032852/793_1688032850.jpg",
@@ -235,7 +221,6 @@
         "tasteDescription": "Sweet, bittersweet, nutty, vegetal, buttery, floral, fruity, oceanic"
     },
     {
-        "_id": "63092102a643c85c74b00e7e",
         "name": "Da Hong Pao",
         "slug": "dahongpao",
         "altnames": "",
@@ -250,7 +235,6 @@
         "tasteDescription": "Peaty and earthy notes with hints of stone fruit, brown sugar, and molasses"
     },
     {
-        "_id": "63092102a643c85c74b00e7f",
         "name": "Shui Jin Gui",
         "slug": "shuijingui",
         "altnames": "Golden Water Turtle Tea",
@@ -266,7 +250,6 @@
         "tasteDescription": "Sweet, floral"
     },
     {
-        "_id": "63092102a643c85c74b00e83",
         "name": "Tieguanyin",
         "slug": "tieguanyin",
         "altnames": "Iron Goddess, Iron Guanyin",
@@ -282,7 +265,6 @@
         "tasteDescription": "Roasted, nutty, creamy, fruity, toasty, honey, floral, fresh, vegetal, and mineral"
     },
     {
-        "_id": "63092102a643c85c74b00e82",
         "name": "Shui Xian",
         "slug": "shuixian",
         "altnames": "Water sprite, Sacred Lily",
@@ -298,7 +280,6 @@
         "tasteDescription": "Mellow and delicate, the liquid is rich and complicated, with lingering fragrance in the mouth"
     },
     {
-        "_id": "63092102a643c85c74b00e80",
         "name": "Tieluohan",
         "slug": "tieluohan",
         "altnames": "Iron Arhat",
@@ -314,7 +295,6 @@
         "tasteDescription": "Strong robust taste with a little bitterness"
     },
     {
-        "_id": "63092102a643c85c74b00e84",
         "name": "Huangjin Gui",
         "slug": "huangjingui",
         "altnames": "Golden Osmanthus, Golden Cassia",
@@ -330,7 +310,6 @@
         "tasteDescription": "Smooth sweet flavor with a rich slightly nutty after-taste"
     },
     {
-        "_id": "63092102a643c85c74b00e70",
         "name": "Wulong (Oolong) Tea",
         "slug": "wulong",
         "type": "Oolong",
@@ -343,7 +322,6 @@
         "tasteDescription": "Similar to black tea, though varied oxidation levels result in widely varied tastes"
     },
     {
-        "_id": "63092102a643c85c74b00e85",
         "name": "Dòng Dǐng",
         "slug": "dongding",
         "altnames": "Tung-ting",
@@ -359,7 +337,6 @@
         "tasteDescription": "Contains nutty notes, along with a smooth caramel-like flavor"
     },
     {
-        "_id": "63092102a643c85c74b00e86",
         "name": "Dongfang Meiren",
         "slug": "dongfangmeiren",
         "altnames": "White-tip oolong",
@@ -375,7 +352,6 @@
         "tasteDescription": ""
     },
     {
-        "_id": "63092102a643c85c74b00e88",
         "name": "Ruan Zhi Oolong",
         "slug": "ruanzhi",
         "altnames": "",
@@ -391,7 +367,6 @@
         "tasteDescription": "Oily flowery taste, with cherry tones."
     },
     {
-        "_id": "63092102a643c85c74b00e87",
         "name": "Baozhong",
         "slug": "baozhong",
         "altnames": "Pouchong",
@@ -407,7 +382,6 @@
         "tasteDescription": "Grassy, floral notes and the taste of creamy green melon."
     },
     {
-        "_id": "63092102a643c85c74b00e89",
         "name": "Jin Xuan",
         "slug": "jinxuan",
         "altnames": "Milk Oolong, Nai Xiang",
@@ -423,7 +397,6 @@
         "tasteDescription": "Taste is light, creamy, and flowery and sometimes compared to milk."
     },
     {
-        "_id": "63092102a643c85c74b00e8a",
         "name": "Assam Smoked Oolong",
         "slug": "assamsmokedoolong",
         "altnames": "",
@@ -439,7 +412,6 @@
         "tasteDescription": "Oaky, smokey, sweet, malty, has notes of apricots and tobacco."
     },
     {
-        "_id": "63092102a643c85c74b00e8b",
         "name": "Baihoi Yinzhen",
         "slug": "baihoiyinzhen",
         "altnames": "Silder Needle, Yinzhen",
@@ -455,7 +427,6 @@
         "tasteDescription": "Sweet, vegetal, and delicate."
     },
     {
-        "_id": "63092102a643c85c74b00e8c",
         "name": "Baimudan tea",
         "slug": "baimudan",
         "altnames": "White Peony tea, Mudan White tea",
@@ -471,7 +442,6 @@
         "tasteDescription": "Toasty, slightly sweet floral notes and a clean aftertaste."
     },
     {
-        "_id": "63092102a643c85c74b00e8d",
         "name": "Shoumei tea",
         "slug": "shoumei",
         "altnames": "Sow Mee",
@@ -487,7 +457,6 @@
         "tasteDescription": "Sweet, vegetal, and delicate."
     },
     {
-        "_id": "63092102a643c85c74b00e8e",
         "name": "Xue Ya",
         "slug": "xueya",
         "altnames": "Snow Buds, Phoenix Eye",
@@ -503,7 +472,6 @@
         "tasteDescription": "Smooth, juicy taste with clean notes of unripe fruits, light wood, and a touch of vegetal astringency."
     },
     {
-        "_id": "63092102a643c85c74b00e8f",
         "name": "Satemwa Antlers",
         "slug": "satemwaantlers",
         "altnames": "",
@@ -519,7 +487,6 @@
         "tasteDescription": "Delicate sweetness of apricot and lychee lingers on the palate."
     },
     {
-        "_id": "63092102a643c85c74b00e90",
         "name": "Earl Grey",
         "slug": "earlgrey",
         "altnames": "",
@@ -536,7 +503,6 @@
         "tasteDescription": "Smoky, earthy, spicy, nutty, citrus, caramel, leather, fruity, and honey."
     },
     {
-        "_id": "63092102a643c85c74b00e92",
         "name": "English Breakfast Tea",
         "slug": "englishbreakfast",
         "altnames": "Breakfast Tea",
@@ -553,7 +519,6 @@
         "tasteDescription": "May be slightly sweet, bitter, or malty."
     },
     {
-        "_id": "63092102a643c85c74b00e94",
         "name": "Masala Chai",
         "slug": "masalachai",
         "altnames": "Spiced tea",
@@ -570,7 +535,6 @@
         "brewTime": "5"
     },
     {
-        "_id": "63092102a643c85c74b00e7c",
         "name": "Konacha",
         "slug": "konacha",
         "altnames": "Gyokurokonacha",
@@ -586,7 +550,6 @@
         "brewTime": "1"
     },
     {
-        "_id": "63092102a643c85c74b00e95",
         "name": "Russian Caravan",
         "slug": "russiancaravan",
         "altnames": "",
@@ -603,7 +566,6 @@
         "brewTime": "4"
     },
     {
-        "_id": "63092102a643c85c74b00e81",
         "name": "Bai Jiguan",
         "slug": "baijiguan",
         "altnames": "White Rooster",
@@ -619,7 +581,6 @@
         "brewTime": "4"
     },
     {
-        "_id": "63092102a643c85c74b00e96",
         "name": "Genmaicha",
         "slug": "genmaicha",
         "altnames": "Brown Rice Tea, Popcorn Tea",
@@ -636,7 +597,6 @@
         "brewTime": "3"
     },
     {
-        "_id": "63092102a643c85c74b00e91",
         "name": "Lady Grey",
         "slug": "ladygrey",
         "altnames": "",
@@ -653,7 +613,6 @@
         "brewTime": "3"
     },
     {
-        "_id": "63092102a643c85c74b00e97",
         "name": "Jasmine Dragon Pearl",
         "slug": "jasminedragonpearl",
         "altnames": "",

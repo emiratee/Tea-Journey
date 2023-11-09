@@ -1,11 +1,13 @@
 const Router = require('koa-router');
-const { getTopics, postTopic, deleteTopic, upvoteTopic, downvoteTopic } = require('./controllers/topicController');
+const teaController = require('./controllers/teaController.js');
+const funfactController = require('./controllers/funfactController.js');
 const router = new Router();
 
-router.get('/topics', getTopics);
-router.post('/topics', postTopic);
-router.delete('/topics/:id', deleteTopic);
-router.put('/topics/:id/up', upvoteTopic)
-router.put('/topics/:id/down', downvoteTopic)
+// Tea
+router.get('/tea', teaController.getTea);
+router.post('/tea', teaController.postTea);
+
+//Funfacts
+router.get('/funfact', funfactController.getFunfact);
 
 module.exports = router;
