@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { getAllTeas } from './apiService';
 import './App.css';
 import BrewTimer from './Components/BrewTimer/BrewTimer';
+import Explore from './Components/Explore';
 import Journey from './Components/Journey';
 import Navbar from './Components/Navbar';
 import TeaCard from './Components/TeaCard';
@@ -26,6 +27,7 @@ function App() {
           {teas.map((tea) => <TeaCard key={tea._id} tea={tea} /> )}
         </div> */}
         <Journey />
+        <Explore />
         <BrewTimer />
       </div>
     </>

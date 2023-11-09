@@ -1,0 +1,7 @@
+.Frame {
+    border: 3px solid #ffffff;
+    border-radius: 10px;
+    width: calc(100% - 80px);
+    height: 350px;
+    margin: 40px;
+}

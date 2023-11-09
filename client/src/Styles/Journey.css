@@ -1,13 +1,14 @@
 .Frame {
     border: 3px solid #ffffff;
     border-radius: 10px;
-    width: calc(100% - 40px);
+    width: calc(100% - 80px);
     height: 350px;
-    margin: 20px;
+    margin: 40px;
 }
 
 .Journey {
-    /*Blur for login filter: blur(10px); */
+    /*Blur for login */
+    /* filter: blur(6px); */
 }
 
 .Journey .Title {
@@ -28,42 +29,48 @@
 }
 
 .Journey .Information {
+    display: grid;
+    grid-template-columns: repeat(5, 2fr);
+    column-gap: 150px;
+    row-gap: 60px;
     padding-inline: 40px;
 }
 
-.Journey .Information .Badges {
+.Journey .Information .Information-Item {
     display: flex;
     flex-direction: column;
     color: #fff;
     gap: 10px;
+    width: max-content;
 }
 
-.Journey .Information .Badges .Badges-List {
+.Journey .Information .Information-Item .Badges-List {
     display: flex;
     flex-direction: row;
+    margin-left: -5px;
 }
 
-.Journey .Information .Badges .Badges-List img {
+.Journey .Information .Information-Item .Badges-List img {
     height: 40px;
 }
 
-.Journey .Information .Badges .Badges-List img:hover {
+.Journey .Information .Information-Item .Badges-List img:hover {
     cursor: pointer;
 }
 
-.Journey .Information .Badges .Badges-List img {
+.Journey .Information .Information-Item .Badges-List img {
     height: 40px;
     position: relative;
     transition: transform 0.3s, opacity 0.3s;
 }
 
-.Journey .Information .Badges .Badges-List img:hover {
+.Journey .Information .Information-Item .Badges-List img:hover {
     cursor: pointer;
     transform: scale(1.1);
     opacity: 0.8;
 }
 
-.Journey .Information .Badges .Badge-Popup {
+.Journey .Information .Information-Item .Badge-Popup {
     position: absolute;
     background-color: #333;
     color: #fff;
@@ -74,6 +81,6 @@
     transition: opacity 0.3s;
 }
 
-.Journey .Information .Badges .Badges-List img:hover + .Badge-Popup {
+.Journey .Information .Information-Item .Badges-List img:hover + .Badge-Popup {
     opacity: 1;
 }
