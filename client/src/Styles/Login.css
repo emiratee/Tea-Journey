@@ -40,6 +40,8 @@
     border-style: none;
     height: 40px;
     width: 225px;
+    font-size: 1.1rem;
+    text-indent: 5px;
 }
 
 .Login-Form .Validate {

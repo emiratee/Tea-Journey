@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useState, useEffect } from 'react';
 import { getAllTeas } from '../apiService';
-import TeaCard from './TeaCard';
+import TeaCard from './Tea/TeaCard';
 import LoginAlert from './Login/LoginAlert';
 
 const Explore = ({ isAuthenticated }) => {
@@ -28,14 +28,14 @@ const Explore = ({ isAuthenticated }) => {
         arrows: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: 1, //3
         slidesToScroll: 3,
         centerMode: true,
         centerPadding: '0',
         rows: 1,
-        slidesPerRow: 2,
-        autoplay: true,
-        autoplaySpeed: 5000,
+        slidesPerRow: 1, //2
+        // autoplay: true,
+        // autoplaySpeed: 5000,
     }
 
 

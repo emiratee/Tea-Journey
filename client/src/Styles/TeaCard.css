@@ -12,6 +12,15 @@
     margin-bottom: 40px;
 }
 
+.TeaCard:hover {
+    cursor: pointer;
+}
+
+.TEST {
+    position: fixed;
+    top: -70%;
+}
+
 .TeaCard .Image {
     border-bottom: 2px solid black;
     box-shadow: 0 10px 10px rgba(0, 0, 0, .1);

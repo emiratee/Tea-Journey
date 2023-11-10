@@ -1,6 +1,13 @@
 import '../../Styles/Login.css';
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ setIsAuthenticated }) => {
+    let navigate = useNavigate()
+    function login() {
+        setIsAuthenticated(true)
+        navigate('/dashboard');
+    }
+
     return (
         <div className="Login">
             <div className="Login-Form">
@@ -15,7 +22,7 @@ const Login = () => {
                     <input type="password" name="password" />
                 </div>
                 <div className="Validate">
-                    <button>Login</button>
+                    <button onClick={login}>Login</button>
                     <span>or register</span>
                 </div>
             </div>
