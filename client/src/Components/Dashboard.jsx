@@ -18,18 +18,3 @@ const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
 };
 
 export default Dashboard;
-
-
-
-/*
-user_id uuidv4
-password sha256
-favourite_tea: tea._id
-brewing_time: keep count -> array
-most_brewed_tea: look into brew time
-teas_drunken: counter
-badges: arr
-day_streak: counter
-reviews: array and the lenght of it
-avg_rating: look into reviews and calc middle
-*/

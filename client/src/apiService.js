@@ -18,4 +18,19 @@ async function getAllFunfacts() {
     }
 }
 
-module.exports = { getAllTeas, getAllFunfacts };
+async function validatePassword(username, password) {
+    try {
+        const response = await fetch(`${url}/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({username, password})
+        });
+        return await response.json();
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+module.exports = { getAllTeas, getAllFunfacts, validatePassword };
