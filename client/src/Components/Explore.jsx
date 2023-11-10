@@ -10,18 +10,23 @@ const Explore = () => {
     const [teas, setTeas] = useState([]);
 
     useEffect(() => {
-      (async () => {
-        const data = await getAllTeas();
-        setTeas(data);
-      })();
+        (async () => {
+            const data = await getAllTeas();
+            setTeas(data);
+        })();
     }, []);
 
     const settings = {
         dots: true,
+        arrows: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        centerMode: true,
+        centerPadding: '0',
+        rows: 1,
+        slidesPerRow: 2
     }
 
     return (
@@ -30,13 +35,11 @@ const Explore = () => {
                 <div className="Title">
                     <h1>Explore the world of tea</h1>
                 </div>
-                    <div className="Cards">
-                        <Slider {...settings}>
-                            <div className='Card' >
-                                {teas.slice(0,6).map(tea => { return <TeaCard key={tea._id} tea={tea} /> })}
-                            </div>
-                        </Slider>
-                    </div>
+                <div className="Cards">
+                    <Slider {...settings}>
+                        {teas.map(tea => { return <TeaCard key={tea._id} tea={tea} /> })}
+                    </Slider>
+                </div>
             </div>
         </div>
     )

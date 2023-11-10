@@ -23,10 +23,37 @@
     padding: 20px;
 }
 
-.Explore .Cards .Card {
-    padding-inline: 30px;
-    display: grid !important;
-    grid-template-columns: repeat(3, 2fr);
-    column-gap: 30px;
-    row-gap: 50px;
+.Explore .Cards {
+    padding-left: 60px;
+}
+
+.slick-dots {
+    background-color: var(--background-colour-home2);
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.slick-dots li {
+    background-color: var(--background-colour-home2);
+    margin: 0 5px;
+}
+
+.slick-dots li button {
+    width: 10px;
+    height: 10px;
+    border: 2px solid #555;
+    background: transparent;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.slick-dots li.slick-active button {
+    background: #555;
+}
+
+.slick-dots li button:before {
+    color: #fff !important;
 }

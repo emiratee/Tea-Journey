@@ -9,6 +9,7 @@
     width: 350px;
     background-color: #d3dbb5;
     background: linear-gradient(-90deg, #969f77, #d3dbb5);
+    margin-bottom: 40px;
 }
 
 .TeaCard .Image {

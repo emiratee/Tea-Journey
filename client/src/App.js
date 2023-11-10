@@ -8,14 +8,14 @@ import Navbar from './Components/Navbar';
 import TeaCard from './Components/TeaCard';
 
 function App() {
-  const [teas, setTeas] = useState([]);
+  // const [teas, setTeas] = useState([]);
 
-  useEffect(() => {
-    (async () => {
-      const data = await getAllTeas();
-      setTeas(data);
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     const data = await getAllTeas();
+  //     setTeas(data);
+  //   })();
+  // }, []);
 
   return (
     <>
