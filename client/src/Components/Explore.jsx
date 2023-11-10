@@ -28,12 +28,12 @@ const Explore = ({ isAuthenticated }) => {
         arrows: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 1, //3
+        slidesToShow: 3, //3
         slidesToScroll: 3,
-        centerMode: true,
+        //centerMode: true,
         centerPadding: '0',
         rows: 1,
-        slidesPerRow: 1, //2
+        slidesPerRow: 2, //2
         // autoplay: true,
         // autoplaySpeed: 5000,
     }

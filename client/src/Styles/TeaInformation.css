@@ -2,17 +2,22 @@
     font-size: 2rem;
 }
 
-.TEST {
-    color: white;
-    border: 3px solid white;
-    background-color: white;
-    position: 'fixed';
-    top: '50%';
-    left: '50%';
-    right: 'auto';
-    bottom: 'auto';
-    margin-right: '-50%';
-    transform: 'translate(-50%, -50%)';
-    height: 'calc(100vh - 8%)';
-    width: 'calc(100vw - 16%)';
+.Page {
+    border-radius: 20px;
+    border-color: none;
+    background: linear-gradient(-90deg, #969f77, #d3dbb5);
+    padding: 30px;
+}
+
+.Page .Description h1 {
+    font-size: 2rem;
+}
+
+.Page .Description span {
+    font-size: 0.9rem;
+    padding-block-end: 15px;
+}
+
+.Page .Description h3 {
+    padding-block: 10px;
 }
