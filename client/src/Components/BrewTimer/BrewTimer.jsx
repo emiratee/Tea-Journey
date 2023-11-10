@@ -6,7 +6,6 @@ import BrewTimerSearchbar from './BrewTimerSearchbar';
 import Back from '../../Assets/back.png';
 import Close from '../../Assets/close.png';
 import { getAllFunfacts } from '../../apiService';
-import { useCallback } from 'react';
 
 const BrewTimer = () => {
     const [searchedTeas, setSearchedTeas] = useState([]);
@@ -101,6 +100,9 @@ const BrewTimer = () => {
                     <>
                         <h1>Brew Timer</h1>
                         <div className="Searchbar">
+                            <div className="Close">
+                                <img src={Close} alt="Close" onClick={togglePopUp} />
+                            </div>
                             <label htmlFor="search">Search your tea:</label>
                             <input type="text" name='search' placeholder='Type here' onChange={(e) => { searchTea(e.target.value) }} />
                             {searchedTeas.length > 0 && (

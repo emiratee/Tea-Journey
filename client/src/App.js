@@ -1,34 +1,20 @@
-import { useState, useEffect } from 'react';
-import { getAllTeas } from './apiService';
 import './App.css';
-import BrewTimer from './Components/BrewTimer/BrewTimer';
-import Explore from './Components/Explore';
-import Journey from './Components/Journey';
+import { useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Dashboard from './Components/Dashboard';
 import Navbar from './Components/Navbar';
-import TeaCard from './Components/TeaCard';
+import auth from './Utils/auth';
 
 function App() {
-  // const [teas, setTeas] = useState([]);
-
-  // useEffect(() => {
-  //   (async () => {
-  //     const data = await getAllTeas();
-  //     setTeas(data);
-  //   })();
-  // }, []);
+  const initialState = auth.isAuthenticated()
+  const [isAuthenticated, setIsAuthenticated] = useState(initialState);
 
   return (
     <>
       <div className="App">
-        <nav>
-          <Navbar />
-        </nav>
-        {/* <div className="Tea">
-          {teas.map((tea) => <TeaCard key={tea._id} tea={tea} /> )}
-        </div> */}
-        <Journey />
-        <Explore />
-        <BrewTimer />
+        <Router>
+          <Dashboard isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
+        </Router>
       </div>
     </>
   );

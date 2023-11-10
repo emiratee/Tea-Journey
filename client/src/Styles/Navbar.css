@@ -1,21 +1,47 @@
 .Navbar {
     position: relative;
     display: flex;
-    flex-flow: row nowrap;
+    justify-content: space-between;
     align-items: center;
-    gap: 20px;
     padding-inline: 40px;
     background-color: #1f1f1f;
     height: 100px;
 }
 
-.Navbar img {
+.Navbar .Name {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.Navbar .Name img {
     width: 75px;
     background-color: transparent;
 }
 
-.Navbar h1 {
+.Navbar .Name h1 {
     font-size: 60px;
+    font-weight: 900;
     color: #5caa48 !important;
     background-color: transparent;
+}
+
+.Navbar .Account img {
+    width: 55px;
+}
+
+.Navbar .Account img:hover, .Navbar .Account button:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+    opacity: 0.9;
+}
+
+.Navbar .Account button {
+    width: 125px;
+    height: 40px;
+    border-radius: 10px;
+    border-style: none;
+    color: #fff;
+    background-color: #5caa48;
+    font-size: 1.2rem;
 }

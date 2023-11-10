@@ -60,7 +60,7 @@
     z-index: 999;
 }
 
-.BrewTimerPage {
+.BrewTimer .BrewTimerPage {
     position: relative;
 }
 
@@ -72,9 +72,18 @@
     height: 20px;
 }
 
-.BrewTimer .Close img {
+.BrewTimer .BrewTimerPage .Close img {
     position: absolute;
     top: 20px;
+    right: 1%;
+    width: 20px;
+    height: 20px;
+}
+
+.BrewTimer .Searchbar .Close img {
+    position: absolute;
+    top: -40px; 
+    /* f this shit */
     right: 1%;
     width: 20px;
     height: 20px;

@@ -6,9 +6,9 @@
     margin: 40px;
 }
 
-.Journey {
-    /*Blur for login */
-    /* filter: blur(6px); */
+.JourneyBlurred {
+    filter: blur(10px);
+    z-index: 9999;
 }
 
 .Journey .Title {

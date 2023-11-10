@@ -5,8 +5,9 @@ import "slick-carousel/slick/slick-theme.css";
 import { useState, useEffect } from 'react';
 import { getAllTeas } from '../apiService';
 import TeaCard from './TeaCard';
+import LoginAlert from './Login/LoginAlert';
 
-const Explore = () => {
+const Explore = ({ isAuthenticated }) => {
     const [teas, setTeas] = useState([]);
 
     useEffect(() => {
@@ -15,6 +16,12 @@ const Explore = () => {
             setTeas(data);
         })();
     }, []);
+
+    useEffect(() => {
+        if (!isAuthenticated) {
+            document.querySelector('.Explore').classList.add('ExploreBlurred');
+        }
+    }, [isAuthenticated]);
 
     const settings = {
         dots: true,
@@ -26,11 +33,19 @@ const Explore = () => {
         centerMode: true,
         centerPadding: '0',
         rows: 1,
-        slidesPerRow: 2
+        slidesPerRow: 2,
+        autoplay: true,
+        autoplaySpeed: 5000,
     }
+
 
     return (
         <div className="Frame-Explore">
+            {!isAuthenticated && (
+                <>
+                    <LoginAlert />
+                </>
+            )}
             <div className="Explore">
                 <div className="Title">
                     <h1>Explore the world of tea</h1>
