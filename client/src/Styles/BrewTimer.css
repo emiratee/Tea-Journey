@@ -30,7 +30,7 @@
     flex-flow: column nowrap;
     text-align: center;
     bottom: 4%;
-    right: 10%;
+    right: 2%;
     width: 400px;
     height: 300px;
     padding-inline: 10px;
@@ -48,16 +48,29 @@
     padding-block-start: 10px;
 }
 
-.BrewTimer .Searchbar label {
-    padding-block-start: 40px;
+.BrewTimer .Searchbar .Search {
+    display: flex;
+    flex-direction: column;
+}
+
+.BrewTimer .Searchbar .Search label {
+    padding-block-start: 10px;
+    padding-block-end: 5px;
     text-align: left;
 }
 
-.BrewTimer .Searchbar input {
+.BrewTimer .Searchbar .Search input {
+    text-indent: 5px;
     height: 32px;
     border-radius: 6px;
     border-style: none;
     z-index: 999;
+}
+
+.BrewTimer .Searchbar .Search img {
+    align-self: center;
+    padding-block-start: 20px;
+    width: 120px;
 }
 
 .BrewTimer .BrewTimerPage {
@@ -102,7 +115,7 @@
     padding-block-start: 20px;
     padding-block-end: 5px;
     padding-inline-start: 5px;
-    top: 100px;
+    top: 70px;
     width: 100%;
     height: max-content;
     max-height: 135px;

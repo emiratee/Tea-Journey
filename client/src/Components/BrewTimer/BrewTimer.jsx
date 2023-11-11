@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import BrewTimerSearchbar from './BrewTimerSearchbar';
 import Back from '../../Assets/back.png';
 import Close from '../../Assets/close.png';
+import Leaves from '../../Assets/green-tea-leaves.png';
 import { getAllFunfacts } from '../../apiService';
 
 //TODO: Refactor this crap
@@ -92,51 +93,61 @@ const BrewTimer = () => {
         clearInterval(currentInterval);
     }
 
+    const token = localStorage.getItem('accessToken');
+
     return (
         <>
-            <div className='BrewTimerButton'>
-                <img src={Watch} alt="Watch" onClick={togglePopUp} />
-            </div>
-            <div className="BrewTimer" style={{ display: 'none' }}>
-                {!selectedTea && (
-                    <>
-                        <h1>Brew Timer</h1>
-                        <div className="Searchbar">
-                            <div className="Close">
-                                <img src={Close} alt="Close" onClick={togglePopUp} />
-                            </div>
-                            <label htmlFor="search">Search your tea:</label>
-                            <input type="text" name='search' placeholder='Type here' onChange={(e) => { searchTea(e.target.value) }} />
-                            {searchedTeas.length > 0 && (
-                                <div className="SearchedTeas">
-                                    {searchedTeas.map(tea => { return <BrewTimerSearchbar key={tea.name} tea={tea} setSelectedTea={setSelectedTea} /> })}
+            {token && (
+                <>
+                    <div className='BrewTimerButton'>
+                        <img src={Watch} alt="Watch" onClick={togglePopUp} />
+                    </div>
+                    <div className="BrewTimer" style={{ display: 'none' }}>
+                        {!selectedTea && (
+                            <>
+                                <h1>Brew Timer</h1>
+                                <div className="Searchbar">
+                                    <div className="Close">
+                                        <img src={Close} alt="Close" onClick={togglePopUp} />
+                                    </div>
+                                    <div className="Search">
+                                        <label htmlFor="search">Search your tea:</label>
+                                        <input type="text" name='search' placeholder='Type here' onChange={(e) => { searchTea(e.target.value) }} />
+                                        <img src={Leaves} alt="Leaves" />
+                                    </div>
+                                    {searchedTeas.length > 0 && (
+                                        <div className="SearchedTeas">
+                                            {searchedTeas.map(tea => { return <BrewTimerSearchbar key={tea.name} tea={tea} setSelectedTea={setSelectedTea} /> })}
+                                        </div>
+                                    )}
                                 </div>
-                            )}
-                        </div>
-                    </>
-                )}
-                {selectedTea && (
-                    <>
-                        <div className="BrewTimerPage">
-                            <h1>Brew Timer</h1>
-                            <div className='Back'>
-                                <img src={Back} alt="Back" onClick={back} />
-                            </div>
-                            <div className="Close">
-                                <img src={Close} alt="Close" onClick={togglePopUp} />
-                            </div>
-                            <div className="TeaTimer">
-                                <div className="TimerInformation">
-                                    <h1 className="Timer">{renderTimer(selectedTea.brewTime)}</h1>
-                                    <span>@ {selectedTea.temperature}</span>
+                            </>
+                        )}
+                        {selectedTea && (
+                            <>
+                                <div className="BrewTimerPage">
+                                    <h1>Brew Timer</h1>
+                                    <div className='Back'>
+                                        <img src={Back} alt="Back" onClick={back} />
+                                    </div>
+                                    <div className="Close">
+                                        <img src={Close} alt="Close" onClick={togglePopUp} />
+                                    </div>
+                                    <div className="TeaTimer">
+                                        <div className="TimerInformation">
+                                            <h1 className="Timer">{renderTimer(selectedTea.brewTime)}</h1>
+                                            <span>@ {selectedTea.temperature}</span>
+                                        </div>
+                                        <button type="submit" name='button' onClick={toggleTimer}>Start</button>
+                                        <h4 className="Hint">{funfact}</h4>
+                                    </div>
                                 </div>
-                                <button type="submit" name='button' onClick={toggleTimer}>Start</button>
-                                <h4 className="Hint">{funfact}</h4>
-                            </div>
-                        </div>
-                    </>
-                )}
-            </div>
+                            </>
+
+                        )}
+                    </div>
+                </>
+            )}
         </>
     )
 }
