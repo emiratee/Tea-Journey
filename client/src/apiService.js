@@ -57,4 +57,16 @@ async function getUser(token) {
     }
 }
 
-module.exports = { getAllTeas, getAllFunfacts, validatePassword, registerUser, getUser };
+async function counter(direction) {
+    const token = localStorage.getItem('accessToken');
+    try {
+        const response = await fetch(`${url}/tea/counter/${direction}/${token}`, {
+            method: 'POST'
+        });
+        if(response.ok) return await response.json();
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+module.exports = { getAllTeas, getAllFunfacts, validatePassword, registerUser, getUser, counter };

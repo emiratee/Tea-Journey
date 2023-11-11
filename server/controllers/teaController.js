@@ -25,4 +25,18 @@ async function postTea(ctx) {
     }
 }
 
-module.exports = { getTea, postTea }
+async function changeCounter(ctx) {
+    try {
+        if(!ctx.request.body) return new Error();
+        const { direction, token } = ctx.params;
+        const result = await models.changeCounter(direction, token);
+        ctx.status = 200;
+        ctx.body = { status: 200, result };
+    } catch (error) {
+        ctx.status = 500;
+        ctx.body = { error: error.message };
+        console.log(error);
+    }
+}
+
+module.exports = { getTea, postTea, changeCounter }

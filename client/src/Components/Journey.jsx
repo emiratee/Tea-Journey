@@ -18,11 +18,11 @@ const Journey = ({ isAuthenticated, userInfo }) => {
     username: 'Test',
     favourite_tea: 'None',
     brewing_time: 0,
-    brewed_teas: [],
+    brewed_teas: 'None',
     teas_drunken: 0,
-    badges: [],
+    badges: 'None',
     day_streak: 0,
-    reviews: [],
+    reviews: 'None',
     average_rating: 0
   };
   let Username = username.charAt(0).toUpperCase() + username.slice(1);
@@ -55,7 +55,7 @@ const Journey = ({ isAuthenticated, userInfo }) => {
           </div>
           <div className="Information-Item">
             <h3>Teas drunken:</h3>
-            <Information text={teas_drunken} />
+            <Information text={teas_drunken} arrows={true} />
           </div>
           <div className="Information-Item">
             <h3>Badges:</h3>
@@ -67,7 +67,7 @@ const Journey = ({ isAuthenticated, userInfo }) => {
           </div>
           <div className="Information-Item">
             <h3>Tea drinking day streak:</h3>
-            <Information text={day_streak} />
+            <Information text={day_streak} arrows={true} />
           </div>
           <div className="Information-Item">
             <h3>Reviews:</h3>
