@@ -5,6 +5,7 @@ import Badge from './Information/Badge';
 import Information from './Information/Information';
 import { useEffect } from 'react';
 import LoginAlert from './Login/LoginAlert';
+import * as moment from 'moment';
 
 const Journey = ({ isAuthenticated, userInfo }) => {
   useEffect(() => {
@@ -14,19 +15,17 @@ const Journey = ({ isAuthenticated, userInfo }) => {
     }
   }, [isAuthenticated]);
 
-  const { username, favourite_tea, brewing_time, brewed_teas, teas_drunken, badges, day_streak, reviews, average_rating } = userInfo ?? {
+  const { name, username, favourite_tea, brewing_time, brewed_teas, teas_drunken, badges, reviews, average_rating, joined_at } = userInfo ?? {
     username: 'Test',
     favourite_tea: 'None',
     brewing_time: 0,
     brewed_teas: 'None',
     teas_drunken: 0,
     badges: 'None',
-    day_streak: 0,
     reviews: 'None',
-    average_rating: 0
+    average_rating: 0,
+    joined_at: 'Now'
   };
-  let Username = username.charAt(0).toUpperCase() + username.slice(1);
-
 
   return (
     <div className="Frame-Journey">
@@ -37,7 +36,7 @@ const Journey = ({ isAuthenticated, userInfo }) => {
       )}
       <div className="Journey">
         <div className="Title">
-          <h1>{Username}'s Journey</h1>
+          <h1>{name}'s Journey</h1>
           <img src={Destination} alt="Destination" />
         </div>
         <div className="Information">
@@ -47,11 +46,15 @@ const Journey = ({ isAuthenticated, userInfo }) => {
           </div>
           <div className="Information-Item">
             <h3>Total brewing Time:</h3>
-            <Information text={`${brewing_time} minutes`} />
+            <Information text={`${(brewing_time / 60).toFixed(0)} minutes`} />
           </div>
           <div className="Information-Item">
             <h3>Most brewed Tea:</h3>
-            <Information text='TBA' />
+            <Information text={
+              Array.isArray(brewed_teas) && brewed_teas.length > 0
+                ? brewed_teas.reduce((max, obj) => (obj.score > max.score ? obj : max), brewed_teas[0]).name
+                : 'None'
+            } />
           </div>
           <div className="Information-Item">
             <h3>Teas drunken:</h3>
@@ -66,16 +69,24 @@ const Journey = ({ isAuthenticated, userInfo }) => {
             </div>
           </div>
           <div className="Information-Item">
-            <h3>Tea drinking day streak:</h3>
-            <Information text={day_streak} arrows={true} />
-          </div>
-          <div className="Information-Item">
             <h3>Reviews:</h3>
             <Information text={`${reviews.length}/42`} />
           </div>
           <div className="Information-Item">
             <h3>Average review rating:</h3>
             <Information text={average_rating} />
+          </div>
+          <div className="Information-Item">
+            <h3>Placeholder</h3>
+            <Information text={'Placeholder'} />
+          </div>
+          <div className="Information-Item">
+            <h3>Placeholder</h3>
+            <Information text={'Placeholder'} />
+          </div>
+          <div className="Information-Item">
+            <h3>Joined at:</h3>
+            <Information text={moment(joined_at).format('Do MMM[,] YYYY')} />
           </div>
         </div>
       </div>

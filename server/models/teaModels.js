@@ -25,4 +25,25 @@ async function changeCounter(direction, token) {
     return res
 }
 
-module.exports = { getTea, postTea, changeCounter }
+async function brewTea(name, token) {
+    const user_id = tokenToUserId(token)
+    const user = await userdb.findOne({ user_id });
+
+    const existingTeaIndex = user.brewed_teas.findIndex(t => t.name === name);
+
+    if (existingTeaIndex === -1) {
+        await userdb.findOneAndUpdate(
+            { user_id },
+            { $push: { brewed_teas: { name, score: 1 } } }
+        );
+    } else {
+        await userdb.findOneAndUpdate(
+            { user_id, 'brewed_teas.name': name },
+            { $inc: { 'brewed_teas.$.score': 1 } }
+        );
+    }
+} 
+
+
+
+module.exports = { getTea, postTea, changeCounter, brewTea }

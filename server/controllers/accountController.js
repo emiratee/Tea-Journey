@@ -73,4 +73,19 @@ async function getUser(ctx) {
     }
 }
 
-module.exports = { login, register, getUser }
+async function brewTime(ctx) {
+    try {
+        const { token } = ctx.params;
+        const user_id = tokenToUserId(token, SECRET_KEY);
+        const { time } = ctx.request.body;
+        const result = await models.brewTime(time, token)
+        ctx.status = 200;
+        ctx.body = { status: 200, result }
+    } catch (error) {
+        ctx.status = 500;
+        ctx.body = { error: error.message };
+        console.log(error);
+    }
+}
+
+module.exports = { login, register, getUser, brewTime }

@@ -69,4 +69,34 @@ async function counter(direction) {
     }
 }
 
-module.exports = { getAllTeas, getAllFunfacts, validatePassword, registerUser, getUser, counter };
+async function brewTea(tea, token) {
+    try {
+        const response = await fetch(`${url}/tea/brew/${token}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name: tea.name })
+        });
+        if(response.ok) return await response.json();
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+async function brewTime(time, token) {
+    try {
+        const response = await fetch(`${url}/user/tea/time/${token}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ time })
+        });
+        if(response.ok) return await response.json();
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+module.exports = { getAllTeas, getAllFunfacts, validatePassword, registerUser, getUser, counter, brewTea, brewTime };

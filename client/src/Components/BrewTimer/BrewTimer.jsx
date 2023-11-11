@@ -6,7 +6,7 @@ import BrewTimerSearchbar from './BrewTimerSearchbar';
 import Back from '../../Assets/back.png';
 import Close from '../../Assets/close.png';
 import Leaves from '../../Assets/green-tea-leaves.png';
-import { getAllFunfacts } from '../../apiService';
+import { brewTea, brewTime, getAllFunfacts } from '../../apiService';
 
 //TODO: Refactor this crap
 
@@ -17,6 +17,7 @@ const BrewTimer = () => {
     const [currentInterval, setCurrentInterval] = useState();
     const [funfact, setFunfact] = useState('');
     const [trigger, setTrigger] = useState(false);
+    const [countSeconds, setCountSeconds] = useState()
 
     useEffect(() => {
         (async () => {
@@ -25,6 +26,12 @@ const BrewTimer = () => {
             setTrigger(!trigger)
         })();
     }, []);
+
+    useEffect(() => {
+        if (selectedTea) {
+            brewTea(selectedTea, token)
+        }
+    }, [selectedTea])
 
     useEffect(() => {
         if (funfacts.length === 0) {
@@ -62,6 +69,7 @@ const BrewTimer = () => {
         seconds--;
 
         if (e.currentTarget.innerText === 'Reset') {
+            brewTime(selectedTea.brewTime * 60 - countSeconds, token);
             clearInterval(currentInterval);
             e.currentTarget.innerText = 'Start';
             seconds = selectedTea.brewTime * 60;
@@ -72,6 +80,7 @@ const BrewTimer = () => {
 
         const interval = setInterval(() => {
             if (seconds === 0) {
+                brewTime(selectedTea.brewTime * 60, token)
                 clearInterval(interval);
                 document.querySelector('.Timer').innerHTML = '0:00'
             } else {
@@ -79,6 +88,7 @@ const BrewTimer = () => {
                 const secondsDisplay = seconds % 60;
                 document.querySelector('.Timer').innerHTML = `${minutesDisplay}:${secondsDisplay < 10 ? '0' : ''}${secondsDisplay}`;
                 seconds--;
+                setCountSeconds(seconds)
             }
         }, 1000);
 

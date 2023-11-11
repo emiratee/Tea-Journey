@@ -1,7 +1,8 @@
 const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
 const jwt = require('jsonwebtoken');
-const client = require('../db')
+const client = require('../db');
+const { tokenToUserId } = require('../utils/util');
 const db = client.db('teajourney').collection('users');
 const SECRET_KEY = 'I love tea and I especially love my cat but I do not love it when my tea is cold'
 
@@ -29,9 +30,9 @@ async function register(name, username, password) {
         brewed_teas: [],
         teas_drunken: 0,
         badges: [],
-        day_streak: 0,
         reviews: [],
-        average_rating: 0
+        average_rating: 0,
+        joined_at: Date.now()
     }
     await db.insertOne(user);
     const token = jwt.sign({ user_id }, SECRET_KEY);
@@ -40,21 +41,28 @@ async function register(name, username, password) {
 }
 
 async function getUser(user) {
-    const { username, favourite_tea, brewing_time, brewed_teas, teas_drunken, badges, day_streak, reviews, average_rating } = user;
+    const { name, username, favourite_tea, brewing_time, brewed_teas, teas_drunken, badges, reviews, average_rating, joined_at } = user;
     return {
+        name,
         username,
         favourite_tea,
         brewing_time,
         brewed_teas,
         teas_drunken,
         badges,
-        day_streak,
         reviews,
-        average_rating
+        average_rating,
+        joined_at
     }
 }
 
-module.exports = { login, register, getUser }
+async function brewTime(time, token) {
+    const user_id = tokenToUserId(token)
+    await db.updateOne({ user_id }, { $inc: { brewing_time: time } });
+}
+
+
+module.exports = { login, register, getUser, brewTime }
 
 
 /*

@@ -39,4 +39,18 @@ async function changeCounter(ctx) {
     }
 }
 
-module.exports = { getTea, postTea, changeCounter }
+async function brewTea(ctx) {
+    try {
+        const { name } = ctx.request.body;
+        const { token } = ctx.params;
+        const result = await models.brewTea(name, token);
+        ctx.status = 200;
+        ctx.body = { status: 200, result };
+    } catch (error) {
+        ctx.status = 500;
+        ctx.body = { error: error.message };
+        console.log(error);
+    }
+}
+
+module.exports = { getTea, postTea, changeCounter, brewTea }
