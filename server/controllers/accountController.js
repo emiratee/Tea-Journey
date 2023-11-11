@@ -1,6 +1,8 @@
 const models = require('../models/accountModels.js');
+const jwt = require('jsonwebtoken');
 const client = require('../db')
 const db = client.db('teajourney').collection('users');
+const SECRET_KEY = 'I love tea and I especially love my cat but I do not love it when my tea is cold';
 
 async function login(ctx) {
     const { username, password } = ctx.request.body;
@@ -40,4 +42,25 @@ async function register(ctx) {
     }
 }
 
-module.exports = { login, register }
+async function getUser(ctx) {
+    try {
+        const { token } = ctx.params;
+        const decoded = jwt.verify(token, SECRET_KEY);
+        const { user_id } = decoded;
+        const user = await db.findOne({ user_id });
+        if(!user) {
+            ctx.status = 404;
+            ctx.body = { status: 404, message: 'User not found' }
+            return
+        }
+        const user_info = await models.getUser(user);
+        ctx.status = 200
+        ctx.body = { status: 200, user_info }
+    } catch (error) {
+        ctx.status = 500;
+        ctx.body = { error: error.message };
+        console.log(error);
+    }
+}
+
+module.exports = { login, register, getUser }

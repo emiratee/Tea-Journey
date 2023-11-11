@@ -33,4 +33,13 @@ async function validatePassword(username, password) {
     }
 }
 
-module.exports = { getAllTeas, getAllFunfacts, validatePassword };
+async function getUser(token) {
+    try {
+        const response = await fetch(`${url}/user/${token}`);
+        return await response.json();
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+module.exports = { getAllTeas, getAllFunfacts, validatePassword, getUser };

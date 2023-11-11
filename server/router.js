@@ -14,5 +14,6 @@ router.get('/funfact', funfactController.getFunfact);
 //Account
 router.post('/register', accountController.register);
 router.post('/login', accountController.login);
+router.get('/user/:token', accountController.getUser)
 
 module.exports = router;

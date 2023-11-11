@@ -3,14 +3,14 @@ import Journey from "./Journey"
 import Explore from "./Explore"
 import BrewTimer from "./BrewTimer/BrewTimer"
 
-const Home = ({ isAuthenticated, setIsAuthenticated }) => {
+const Home = ({ isAuthenticated, setIsAuthenticated, userInfo }) => {
     return (
         <>
             <nav>
-                <Navbar isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
+                <Navbar isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} userInfo={userInfo} />
             </nav>
-            <Journey isAuthenticated={isAuthenticated} />
-            <Explore isAuthenticated={isAuthenticated} />
+            <Journey isAuthenticated={isAuthenticated} userInfo={userInfo} />
+            <Explore isAuthenticated={isAuthenticated} userInfo={userInfo} />
             <BrewTimer />
         </>
     )

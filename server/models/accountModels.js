@@ -42,7 +42,22 @@ async function register(body) {
     return res;
 }
 
-module.exports = { login, register }
+async function getUser(user) {
+    const { username, favourite_tea, brewing_time, brewed_teas, teas_drunken, badges, day_streak, reviews, average_rating } = user;
+    return {
+        username,
+        favourite_tea,
+        brewing_time,
+        brewed_teas,
+        teas_drunken,
+        badges,
+        day_streak,
+        reviews,
+        average_rating
+    }
+}
+
+module.exports = { login, register, getUser }
 
 
 /*

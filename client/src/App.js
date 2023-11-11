@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Dashboard from './Components/Dashboard';
 import auth from './Utils/auth';
+import { getUser } from './apiService';
 
 function App() {
   const initialState = auth.isAuthenticated();
@@ -11,17 +12,27 @@ function App() {
 
   const token = localStorage.getItem('accessToken');
   useEffect(() => {
+    (async () => {
       if (token) {
-          setIsAuthenticated(true);
-          auth.login();
+        setIsAuthenticated(true);
+        const user = await getUser(token);
+        setUserInfo(user.user_info);
+        if (userInfo) auth.login();
       }
-  }, [token, setIsAuthenticated]);
+    })();
+  }, [token, setIsAuthenticated, setUserInfo]);
+
+  console.log(userInfo);
 
   return (
     <>
       <div className="App">
         <Router>
-          <Dashboard isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
+            <Dashboard
+              isAuthenticated={isAuthenticated}
+              setIsAuthenticated={setIsAuthenticated}
+              userInfo={userInfo}
+            />
         </Router>
       </div>
     </>
