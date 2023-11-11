@@ -6,11 +6,19 @@ const Login = ({ setIsAuthenticated }) => {
     let navigate = useNavigate()
     async function login(e) {
         e.preventDefault()
-        const isValid = await validatePassword(e.currentTarget.username.value, e.currentTarget.password.value);
-        console.log(isValid);
+        const response = await validatePassword(e.currentTarget.username.value, e.currentTarget.password.value);
+        console.log(response);
+
+        if(response.status === 200) {
+            setIsAuthenticated(true);
+            localStorage.setItem('accessToken', response.token)
+            navigate('/dashboard');
+        } else {
+            e.target.username.value = '';
+            e.target.password.value = '';
+            alert(response.message);
+        }
         
-        setIsAuthenticated(isValid)
-        navigate('/dashboard');
     }
 
     return (

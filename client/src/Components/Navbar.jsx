@@ -10,11 +10,10 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
 
   function authenticate() {
     navigate('/login')
-    // setIsAuthenticated(true)
-    // auth.login(() => {
-    //   document.querySelector('.Journey').classList.remove('JourneyBlurred');
-    //   document.querySelector('.Explore').classList.remove('ExploreBlurred');
-    // })
+  }
+
+  function goToProfile() {
+    auth.logout();
   }
 
   return (
@@ -31,7 +30,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
         )}
         {isAuthenticated && (
           <>
-            <img src={Account} alt="Account" />
+            <img src={Account} alt="Account" onClick={goToProfile} />
           </>
         )}
       </div>

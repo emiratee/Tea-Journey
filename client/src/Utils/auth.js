@@ -3,14 +3,21 @@ class Auth {
         this.authenticated = false;
     }
 
-    login(cb) {
+    login() {
         this.authenticated = true;
-        cb();
+        document.querySelector('.Journey').classList.remove('JourneyBlurred');
+        document.querySelector('.Explore').classList.remove('ExploreBlurred');
     }
 
-    logout(cb) {
+    logout() {
         this.authenticated = false;
-        cb();
+        localStorage.removeItem('accessToken');
+        window.location.reload(); //Work around so I dont have to set everything to default
+        //TODO: implement
+        /*
+        document.querySelector('.Journey').classList.add('JourneyBlurred');
+        document.querySelector('.Explore').classList.add('ExploreBlurred');
+        */
     }
 
     isAuthenticated() {

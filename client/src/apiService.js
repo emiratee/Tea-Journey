@@ -25,7 +25,7 @@ async function validatePassword(username, password) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({username, password})
+            body: JSON.stringify({ username, password })
         });
         return await response.json();
     } catch (error) {

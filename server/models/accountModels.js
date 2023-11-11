@@ -1,20 +1,18 @@
 const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
+const jwt = require('jsonwebtoken');
 const client = require('../db')
 const db = client.db('teajourney').collection('users');
+const SECRET_KEY = 'I love tea and I especially love my cat but I do not love it when my tea is cold'
 
-async function login(body) {
-    if (!body) return new Error();
-    const { username, password } = body;
+async function login(user_id, userPassword, dbPassword) {
     await client.connect();
 
-    const check = await db.findOne({ username });
-    if (check === null) return new Error() //user does not exists
+    const validPassword = await bcrypt.compare(userPassword, dbPassword);
+    if(!validPassword) return;
 
-    const hash = check.password;
-    const validPassword = await bcrypt.compare(password, hash);
-
-    return validPassword ? true : false;
+    const token = jwt.sign({ user_id }, SECRET_KEY);
+    return token;
 }
 
 async function register(body) {

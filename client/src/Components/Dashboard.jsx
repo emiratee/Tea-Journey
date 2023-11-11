@@ -1,11 +1,10 @@
-import React from 'react';
 import { useRoutes, Navigate } from 'react-router-dom';
 import ErrorPage from './ErrorPage';
 import Home from './Home';
 import Login from './Login/Login';
 import Profile from './Profile/Profile';
 
-const Dashboard = ({ isAuthenticated, setIsAuthenticated }) => {
+const Dashboard =({ isAuthenticated, setIsAuthenticated }) => {
     const element = useRoutes([
         { path: '/', element: <Navigate to={'/dashboard'} /> },
         { path: '/dashboard', element: <Home isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} /> },

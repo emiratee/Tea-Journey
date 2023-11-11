@@ -31,7 +31,7 @@ const Journey = ({ isAuthenticated }) => {
             <Information text={'Earl Grey'} />
           </div>
           <div className="Information-Item">
-            <h3>Brewing Time:</h3>
+            <h3>Total brewing Time:</h3>
             <Information text={'48 minutes'} />
           </div>
           <div className="Information-Item">
