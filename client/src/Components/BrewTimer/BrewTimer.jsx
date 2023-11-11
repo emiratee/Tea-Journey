@@ -7,6 +7,8 @@ import Back from '../../Assets/back.png';
 import Close from '../../Assets/close.png';
 import { getAllFunfacts } from '../../apiService';
 
+//TODO: Refactor this crap
+
 const BrewTimer = () => {
     const [searchedTeas, setSearchedTeas] = useState([]);
     const [funfacts, setFunfacts] = useState([]);

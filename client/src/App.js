@@ -17,12 +17,9 @@ function App() {
         setIsAuthenticated(true);
         const user = await getUser(token);
         setUserInfo(user.user_info);
-        if (userInfo) auth.login();
       }
     })();
   }, [token, setIsAuthenticated, setUserInfo]);
-
-  console.log(userInfo);
 
   return (
     <>

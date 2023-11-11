@@ -8,7 +8,8 @@ import LoginAlert from './Login/LoginAlert';
 
 const Journey = ({ isAuthenticated, userInfo }) => {
   useEffect(() => {
-    if (!isAuthenticated) {
+    const token = localStorage.getItem('accessToken')
+    if (!token) {
       document.querySelector('.Journey').classList.add('JourneyBlurred');
     }
   }, [isAuthenticated]);

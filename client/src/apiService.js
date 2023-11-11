@@ -33,6 +33,21 @@ async function validatePassword(username, password) {
     }
 }
 
+async function registerUser(name, username, password) {
+    try {
+        const response = await fetch(`${url}/register`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, username, password })
+        });
+        return await response.json();
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
 async function getUser(token) {
     try {
         const response = await fetch(`${url}/user/${token}`);
@@ -42,4 +57,4 @@ async function getUser(token) {
     }
 }
 
-module.exports = { getAllTeas, getAllFunfacts, validatePassword, getUser };
+module.exports = { getAllTeas, getAllFunfacts, validatePassword, registerUser, getUser };

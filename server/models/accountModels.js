@@ -15,16 +15,13 @@ async function login(user_id, userPassword, dbPassword) {
     return token;
 }
 
-async function register(body) {
-    if (!body) return new Error();
-    const { username, password } = body;
+async function register(name, username, password) {
     await client.connect();
-
-    const check = await db.findOne({ username });
-    if(check !== null) return new Error('no'); //suer already exists
+    const user_id = uuidv4();
 
     const user = {
-        user_id: uuidv4(),
+        user_id,
+        name,
         username,
         password: await bcrypt.hash(password, 10),
         favourite_tea: 'None',
@@ -36,10 +33,10 @@ async function register(body) {
         reviews: [],
         average_rating: 0
     }
-
-    const res = await db.insertOne(user);
+    await db.insertOne(user);
+    const token = jwt.sign({ user_id }, SECRET_KEY);
     //client.close();
-    return res;
+    return token;
 }
 
 async function getUser(user) {

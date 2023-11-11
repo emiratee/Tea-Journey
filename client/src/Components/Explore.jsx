@@ -18,7 +18,8 @@ const Explore = ({ isAuthenticated }) => {
     }, []);
 
     useEffect(() => {
-        if (!isAuthenticated) {
+        const token = localStorage.getItem('accessToken')
+        if (!token) {
             document.querySelector('.Explore').classList.add('ExploreBlurred');
         }
     }, [isAuthenticated]);

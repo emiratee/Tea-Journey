@@ -31,10 +31,20 @@ async function login(ctx) {
 }
 
 async function register(ctx) {
+    const { name, username, password } = ctx.request.body;
+    if(!name || !username || !password) throw new Error();
     try {
-        const result = await models.register(ctx.request.body);
+        const userWithUsername = await db.findOne({ username });
+        if(userWithUsername) {
+            ctx.status = 401;
+            ctx.body = { status: 401, message: 'User with this username already exists' };
+            return;
+        }
+
+        const token = await models.register(name, username, password);
         ctx.status = 201;
-        ctx.body = result;
+        ctx.body = { status: 201, message: 'Success', token };
+
     } catch (error) {
         ctx.status = 500;
         ctx.body = { error: error.message };

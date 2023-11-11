@@ -4,10 +4,10 @@ import { validatePassword } from '../../apiService';
 
 const Login = ({ setIsAuthenticated }) => {
     let navigate = useNavigate()
+    
     async function login(e) {
         e.preventDefault()
         const response = await validatePassword(e.currentTarget.username.value, e.currentTarget.password.value);
-        console.log(response);
 
         if(response.status === 200) {
             setIsAuthenticated(true);
@@ -18,7 +18,10 @@ const Login = ({ setIsAuthenticated }) => {
             e.target.password.value = '';
             alert(response.message);
         }
-        
+    }
+
+    function register() {
+        navigate('/register')
     }
 
     return (
@@ -36,7 +39,7 @@ const Login = ({ setIsAuthenticated }) => {
                 </div>
                 <div className="Validate">
                     <button type='Submit'>Login</button>
-                    <span>or register</span>
+                    <span onClick={register}>or register</span>
                 </div>
             </form>
         </div>

@@ -2,6 +2,7 @@ import Navbar from "./Navbar"
 import Journey from "./Journey"
 import Explore from "./Explore"
 import BrewTimer from "./BrewTimer/BrewTimer"
+import auth from "../Utils/auth"
 
 const Home = ({ isAuthenticated, setIsAuthenticated, userInfo }) => {
     return (
