@@ -9,7 +9,7 @@ async function login(user_id, userPassword, dbPassword) {
     await client.connect();
 
     const validPassword = await bcrypt.compare(userPassword, dbPassword);
-    if(!validPassword) return;
+    if (!validPassword) return;
 
     const token = jwt.sign({ user_id }, SECRET_KEY);
     return token;
@@ -42,7 +42,7 @@ async function register(name, username, password) {
                 unlocked: false
             },
             {
-                name: 'Tea Lover', //When having at least on 10 star reviews
+                name: 'Tea Lover', //When having at least one 10 star reviews
                 unlocked: false
             },
             {
@@ -98,7 +98,7 @@ async function addTea(name, user_id) {
             { $inc: { 'brewed_teas.$.score': 1 } }
         );
     }
-} 
+}
 
 async function addBrewTime(time, user_id) {
     await db.updateOne({ user_id }, { $inc: { brewing_time: time } });
@@ -124,6 +124,45 @@ async function rateTea(name, rating, user_id) {
             { $set: { 'reviews.$.score': rating } }
         );
     }
+
+    const updatedUser = await db.findOne({ user_id });
+    const reviews = updatedUser.reviews;
+
+    let res = 0;
+    await reviews.forEach(review => res += review.score);
+    let avg = res / reviews.length;
+
+    await db.updateOne({ user_id }, { $set: { average_rating: avg } });
+
+    const isTeaNoob = reviews.length === 0;
+    await db.updateOne(
+        { user_id, 'badges.name': 'Tea Noob' },
+        { $set: { 'badges.$.unlocked': isTeaNoob } }
+    );
+
+    const isTeaHater = avg < 2;
+    await db.updateOne(
+        { user_id, 'badges.name': 'Tea Hater' },
+        { $set: { 'badges.$.unlocked': isTeaHater } }
+    );
+
+    const isTeaExpert = reviews.length >= 10;
+    await db.updateOne(
+        { user_id, 'badges.name': 'Tea Expert' },
+        { $set: { 'badges.$.unlocked': isTeaExpert } }
+    );
+
+    const isTeaLover = reviews.some(review => review.score === 10)
+    await db.updateOne(
+        { user_id, 'badges.name': 'Tea Lover' },
+        { $set: { 'badges.$.unlocked': isTeaLover } }
+    );
+
+    const isTeaEnthusiast = reviews.length === 42;
+    await db.updateOne(
+        { user_id, 'badges.name': 'Tea Enthusiast' },
+        { $set: { 'badges.$.unlocked': isTeaEnthusiast } }
+    );
 }
 
 

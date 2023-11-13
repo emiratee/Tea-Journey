@@ -4,12 +4,12 @@ import { counter } from '../../apiService';
 
 const Information = ({ className, text, arrows }) => {
   async function counterUp() {
-    await counter('up')
+    counter('up')
     document.getElementById('Counter').innerHTML = +document.getElementById('Counter').innerHTML + 1;
   }
 
   async function counterDown() {
-    await counter('down')
+    counter('down')
     document.getElementById('Counter').innerHTML = +document.getElementById('Counter').innerHTML - 1;
   }
 

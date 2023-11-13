@@ -25,11 +25,11 @@ function App() {
     <>
       <div className="App">
         <Router>
-            <Dashboard
-              isAuthenticated={isAuthenticated}
-              setIsAuthenticated={setIsAuthenticated}
-              userInfo={userInfo}
-            />
+          <Dashboard
+            isAuthenticated={isAuthenticated}
+            setIsAuthenticated={setIsAuthenticated}
+            userInfo={userInfo}
+          />
         </Router>
       </div>
     </>

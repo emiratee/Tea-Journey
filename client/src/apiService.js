@@ -65,8 +65,12 @@ async function getUser(token) {
 async function counter(direction) {
     const token = localStorage.getItem('accessToken');
     try {
-        const response = await fetch(`${url}/tea/counter/${direction}/${token}`, {
-            method: 'POST'
+        const response = await fetch(`${url}/user/tea/counter/${direction}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            },
         });
         if(response.ok) return await response.json();
     } catch (error) {

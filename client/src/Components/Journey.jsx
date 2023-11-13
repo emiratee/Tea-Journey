@@ -67,9 +67,6 @@ const Journey = ({ isAuthenticated, userInfo }) => {
           <div className="Information-Item">
             <h3>Badges:</h3>
             <div className="Badges-List">
-              {/* <Badge img={TestBadge} text={'Tea Lover'} />
-              <Badge img={TestBadge} text={'Tea Expert'} />
-              <Badge img={TestBadge} text={'Tea Maker'} /> */}
               {typeof badges === 'object' && badges.filter(badge => badge.unlocked).map(badge => { return <Badge img={TestBadge} text={badge.name} /> })}
             </div>
           </div>
@@ -79,7 +76,7 @@ const Journey = ({ isAuthenticated, userInfo }) => {
           </div>
           <div className="Information-Item">
             <h3>Average review rating:</h3>
-            <Information text={average_rating} />
+            <Information text={average_rating.toFixed(2)} />
           </div>
           <div className="Information-Item">
             <h3>Placeholder</h3>
