@@ -6,7 +6,7 @@ import { useState } from 'react';
 import Profile from './Profile/Profile';
 
 
-const Navbar = ({ isAuthenticated, setIsAuthenticated, userInfo }) => {
+const Navbar = ({ isAuthenticated, setIsAuthenticated, userInfo, setUserInfo }) => {
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false)
   let navigate = useNavigate()
 
@@ -36,7 +36,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated, userInfo }) => {
           </>
         )}
         {isProfileModalOpen && (
-          <Profile setIsProfileModalOpen={setIsProfileModalOpen} userInfo={userInfo} />
+          <Profile setIsProfileModalOpen={setIsProfileModalOpen} userInfo={userInfo} setUserInfo={setUserInfo} />
         )}
       </div>
     </div>

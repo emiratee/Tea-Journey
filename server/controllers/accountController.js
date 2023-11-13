@@ -6,17 +6,17 @@ const SECRET_KEY = 'I love tea and I especially love my cat but I do not love it
 
 async function login(ctx) {
     const { username, password } = ctx.request.body;
-    if(!username || !password) throw new Error();
+    if (!username || !password) throw new Error();
     try {
         const user = await db.findOne({ username });
-        if(!user) {
+        if (!user) {
             ctx.status = 401;
             ctx.body = { status: 401, message: 'User does not exists' };
             return;
         }
 
         const token = await models.login(user.user_id, password, user.password); //First one is the one the user submits, 2nd one is from db
-        if(!token) {
+        if (!token) {
             ctx.status = 401;
             ctx.body = { status: 401, message: 'Invalid password.' }
             return;
@@ -32,10 +32,10 @@ async function login(ctx) {
 
 async function register(ctx) {
     const { name, username, password } = ctx.request.body;
-    if(!name || !username || !password) throw new Error();
+    if (!name || !username || !password) throw new Error();
     try {
         const userWithUsername = await db.findOne({ username });
-        if(userWithUsername) {
+        if (userWithUsername) {
             ctx.status = 401;
             ctx.body = { status: 401, message: 'User with this username already exists' };
             return;
@@ -57,7 +57,7 @@ async function getUser(ctx) {
         const { authorization } = ctx.headers;
         const user_id = tokenToUserId(authorization, SECRET_KEY);
         const user = await db.findOne({ user_id });
-        if(!user) {
+        if (!user) {
             ctx.status = 404;
             ctx.body = { status: 404, message: 'User not found' }
             return
@@ -74,7 +74,7 @@ async function getUser(ctx) {
 
 async function changeCounter(ctx) {
     try {
-        if(!ctx.request.body) return new Error();
+        if (!ctx.request.body) return new Error();
         const { authorization } = ctx.headers;
         const { direction } = ctx.params;
         const user_id = tokenToUserId(authorization)
@@ -173,7 +173,13 @@ async function updateUser(ctx) {
             return;
         }
         const user_id = tokenToUserId(authorization, SECRET_KEY);
-        const result = await models.updateUser(name, username, password, user_id)
+        const thisUser = await db.findOne({ user_id })
+        const result = await models.updateUser({
+            name: name === '' ? thisUser.name : name,
+            username: username === '' ? thisUser.username : username,
+            password: password === '' ? thisUser.password : password,
+            user_id
+        });
         ctx.status = 200;
         ctx.body = { status: 200, result }
     } catch (error) {

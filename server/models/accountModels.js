@@ -206,12 +206,15 @@ async function resetJourney(user_id) {
     return result;
 }
 
-async function updatedUser(name, username, password, user_id) {
-    
+async function updateUser(data) {
+    const { name, username, password, user_id } = data;
+    const newPassword = await bcrypt.hash(password, 10);
+
+    return await db.findOneAndUpdate({ user_id }, { $set: { name, username, password: newPassword } }, { returnDocument: 'after' });
 }
 
 
-module.exports = { login, register, getUser, changeCounter, addTea, addBrewTime, markAsFavourite, rateTea, resetJourney }
+module.exports = { login, register, getUser, changeCounter, addTea, addBrewTime, markAsFavourite, rateTea, resetJourney, updateUser }
 
 
 /*

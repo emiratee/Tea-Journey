@@ -17,6 +17,7 @@ const Journey = ({ isAuthenticated, userInfo, setUserInfo }) => {
 
 
   const { name, username, favourite_tea, brewing_time, brewed_teas, teas_drunken, badges, reviews, average_rating, joined_at } = userInfo ?? {
+    name: 'Test',
     username: 'Test',
     favourite_tea: 'None',
     brewing_time: 0,

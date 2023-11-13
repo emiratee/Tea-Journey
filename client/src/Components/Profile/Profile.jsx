@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import auth from '../../Utils/auth';
 import Close from '../../Assets/close.png';
 import { useState } from 'react';
-import { resetJourney } from '../../apiService';
+import { resetJourney, updateUser } from '../../apiService';
 
 const ProfileStyle = {
   content: {
@@ -22,15 +22,27 @@ const ProfileStyle = {
   }
 };
 
-const Profile = ({ setIsProfileModalOpen, userInfo }) => {
+const Profile = ({ setIsProfileModalOpen, userInfo, setUserInfo }) => {
   const [isModalOpen, setIsModalOpen] = useState(true)
 
-  function updateUser(e) {
+  async function update(e) {
     e.preventDefault();
     const newName = e.currentTarget.name.value;
-    const newUsername = e.currentTarget.name.value;
-    const newPassword = e.currentTarget.name.value;
-    console.log(newName, newUsername, newPassword);
+    const newUsername = e.currentTarget.username.value;
+    const newPassword = e.currentTarget.password.value;
+    const token = localStorage.getItem('accessToken')
+    const response = await updateUser(newName, newUsername, newPassword, token);
+    if (response.status === 200) {
+      setUserInfo((prev) => ({
+        ...prev,
+        name: response.result.name,
+        username: response.result.username,
+        password: response.result.password
+      }));
+      alert('Successfully updated user data!');
+    } else {
+      alert(response.message)
+    }
   }
 
   function close() {
@@ -60,7 +72,7 @@ const Profile = ({ setIsProfileModalOpen, userInfo }) => {
           <img src={Close} alt="Close" onClick={close} />
         </div>
         <div className="Main">
-          <form className="Profile-Form" onSubmit={updateUser}>
+          <form className="Profile-Form" onSubmit={update}>
             <div className="Name">
               <label htmlFor="name">Name:</label>
               <input type="text" name="name" placeholder={'New name'} />

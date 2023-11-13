@@ -72,7 +72,7 @@ async function counter(direction) {
                 'Authorization': `${token}`
             },
         });
-        if(response.ok) return await response.json();
+        if (response.ok) return await response.json();
     } catch (error) {
         throw new Error(error);
     }
@@ -88,7 +88,7 @@ async function addBrewedTea(tea, token) {
             },
             body: JSON.stringify({ name: tea.name })
         });
-        if(response.ok) return await response.json();
+        if (response.ok) return await response.json();
     } catch (error) {
         throw new Error(error);
     }
@@ -104,7 +104,7 @@ async function addTeaTime(time, token) {
             },
             body: JSON.stringify({ time })
         });
-        if(response.ok) return await response.json();
+        if (response.ok) return await response.json();
     } catch (error) {
         throw new Error(error);
     }
@@ -120,7 +120,7 @@ async function markAsFavourite(name, token) {
             },
             body: JSON.stringify({ name })
         });
-        if(response.ok) return await response.json();
+        if (response.ok) return await response.json();
     } catch (error) {
         throw new Error(error);
     }
@@ -136,7 +136,7 @@ async function rateTea(name, rating, token) {
             },
             body: JSON.stringify({ name, rating })
         });
-        if(response.ok) return await response.json();
+        if (response.ok) return await response.json();
     } catch (error) {
         throw new Error(error);
     }
@@ -151,10 +151,26 @@ async function resetJourney(token) {
                 'Authorization': `${token}`
             }
         });
-        if(response.ok) return await response.json();
+        if (response.ok) return await response.json();
     } catch (error) {
         throw new Error(error);
     }
 }
 
-module.exports = { getAllTeas, getAllFunfacts, validatePassword, registerUser, getUser, counter, addBrewedTea, addTeaTime, markAsFavourite, rateTea, resetJourney };
+async function updateUser(name, username, password, token) {
+    try {
+        const response = await fetch(`${url}/user/account/update`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            },
+            body: JSON.stringify({ name, username, password })
+        });
+        return await response.json();
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+module.exports = { getAllTeas, getAllFunfacts, validatePassword, registerUser, getUser, counter, addBrewedTea, addTeaTime, markAsFavourite, rateTea, resetJourney, updateUser };
