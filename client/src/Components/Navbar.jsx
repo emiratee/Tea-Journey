@@ -36,7 +36,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated, userInfo }) => {
           </>
         )}
         {isProfileModalOpen && (
-          <Profile setIsProfileModalOpen={setIsProfileModalOpen} />
+          <Profile setIsProfileModalOpen={setIsProfileModalOpen} userInfo={userInfo} />
         )}
       </div>
     </div>

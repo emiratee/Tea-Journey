@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import LoginAlert from './Login/LoginAlert';
 import * as moment from 'moment';
 
-const Journey = ({ isAuthenticated, userInfo }) => {
+const Journey = ({ isAuthenticated, userInfo, setUserInfo }) => {
   useEffect(() => {
     const token = localStorage.getItem('accessToken')
     if (!token) {
@@ -60,7 +60,7 @@ const Journey = ({ isAuthenticated, userInfo }) => {
           </div>
           <div className="Information-Item">
             <h3>Teas drunken:</h3>
-            <Information text={teas_drunken} arrows={true} />
+            <Information text={teas_drunken} arrows={true} userInfo={userInfo} setUserInfo={setUserInfo} />
           </div>
           <div className="Information-Item">
             <h3>Badges:</h3>

@@ -7,7 +7,7 @@ import { getAllTeas } from '../apiService';
 import TeaCard from './Tea/TeaCard';
 import LoginAlert from './Login/LoginAlert';
 
-const Explore = ({ isAuthenticated, userInfo }) => {
+const Explore = ({ isAuthenticated, userInfo, setUserInfo }) => {
     const [teas, setTeas] = useState([]);
 
     useEffect(() => {
@@ -28,24 +28,22 @@ const Explore = ({ isAuthenticated, userInfo }) => {
         dots: true,
         arrows: false,
         infinite: true,
-        speed: 500,
+        speed: 650,
         slidesToShow: 3, //3
         slidesToScroll: 3,
         //centerMode: true,
         centerPadding: '0',
         rows: 1,
         slidesPerRow: 2, //2
-        // autoplay: true,
-        // autoplaySpeed: 5000,
+        autoplay: true,
+        autoplaySpeed: 5000,
     }
 
 
     return (
         <div className="Frame-Explore">
             {!isAuthenticated && (
-                <>
-                    <LoginAlert />
-                </>
+                <LoginAlert />
             )}
             <div className="Explore">
                 <div className="Title">
@@ -53,7 +51,7 @@ const Explore = ({ isAuthenticated, userInfo }) => {
                 </div>
                 <div className="Cards">
                     <Slider {...settings}>
-                        {teas.map(tea => { return <TeaCard key={tea._id} tea={tea} userInfo={userInfo} /> })}
+                        {teas.map(tea => { return <TeaCard key={tea._id} tea={tea} userInfo={userInfo} setUserInfo={setUserInfo} /> })}
                     </Slider>
                 </div>
             </div>

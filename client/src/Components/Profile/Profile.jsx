@@ -22,11 +22,15 @@ const ProfileStyle = {
   }
 };
 
-const Profile = ({ setIsProfileModalOpen }) => {
+const Profile = ({ setIsProfileModalOpen, userInfo }) => {
   const [isModalOpen, setIsModalOpen] = useState(true)
 
   function updateUser(e) {
     e.preventDefault();
+    const newName = e.currentTarget.name.value;
+    const newUsername = e.currentTarget.name.value;
+    const newPassword = e.currentTarget.name.value;
+    console.log(newName, newUsername, newPassword);
   }
 
   function close() {

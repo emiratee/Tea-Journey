@@ -12,14 +12,15 @@ router.post('/tea', teaController.postTea);
 router.get('/funfact', funfactController.getFunfact);
 
 //Account
-router.post('/register', accountController.register);
-router.post('/login', accountController.login);
-router.get('/user', accountController.getUser)
+router.post('/user/account/register', accountController.register);
+router.post('/user/account/login', accountController.login);
+router.get('/user/account', accountController.getUser)
 router.post('/user/tea/counter/:direction', accountController.changeCounter);
 router.post('/user/tea/brew', accountController.addTea);
 router.post('/user/tea/time', accountController.addBrewTime);
 router.post('/user/tea/favourite', accountController.markAsFavourite);
 router.post('/user/tea/rate', accountController.rateTea);
 router.post('/user/journey/reset', accountController.resetJourney);
+router.post('/user/account/update', accountController.updateUser);
 
 module.exports = router;

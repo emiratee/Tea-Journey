@@ -6,21 +6,46 @@ import auth from "../Utils/auth"
 import { useEffect, useState } from "react"
 
 const Home = ({ isAuthenticated, setIsAuthenticated, userInfo }) => {
-  const [currentUserInfo, setCurrentUserInfo] = useState(userInfo);
-
+    const [currentUserInfo, setCurrentUserInfo] = useState();
     useEffect(() => {
-        if (userInfo) {
-          setCurrentUserInfo(userInfo)
+        const token = localStorage.getItem('accessToken');
+        if (!token) {
+            setCurrentUserInfo({
+                username: 'Test',
+                favourite_tea: 'None',
+                brewing_time: 0,
+                brewed_teas: 'None',
+                teas_drunken: 0,
+                badges: [{
+                    name: 'Placeholder',
+                    unlocked: true
+                }],
+                reviews: 'None',
+                average_rating: 0,
+                joined_at: 'Now'
+            });
         }
-      }, [userInfo])
+        if (userInfo) {
+            setCurrentUserInfo(userInfo)
+        }
+    }, [userInfo]);
+
     return (
         <>
-            <nav>
-                <Navbar isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} userInfo={userInfo} />
-            </nav>
-            <Journey isAuthenticated={isAuthenticated} userInfo={userInfo} />
-            <Explore isAuthenticated={isAuthenticated} userInfo={userInfo} />
-            <BrewTimer />
+            {currentUserInfo ? (
+                <>
+                    <nav>
+                        <Navbar isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} userInfo={currentUserInfo} setUserInfo={setCurrentUserInfo} />
+                    </nav>
+                    <Journey isAuthenticated={isAuthenticated} userInfo={currentUserInfo} setUserInfo={setCurrentUserInfo} />
+                    <Explore isAuthenticated={isAuthenticated} userInfo={currentUserInfo} setUserInfo={setCurrentUserInfo} />
+                    <BrewTimer userInfo={currentUserInfo} setUserInfo={setCurrentUserInfo} />
+                </>
+            ) : (
+                <>
+                    <p>Loading...</p>
+                </>
+            )}
         </>
     )
 }

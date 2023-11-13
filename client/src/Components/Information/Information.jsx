@@ -2,15 +2,21 @@ import '../../Styles/Information.css';
 import Up from '../../Assets/up.png';
 import { counter } from '../../apiService';
 
-const Information = ({ className, text, arrows }) => {
+const Information = ({ className, text, arrows, userInfo, setUserInfo }) => {
   async function counterUp() {
     counter('up')
-    document.getElementById('Counter').innerHTML = +document.getElementById('Counter').innerHTML + 1;
+    setUserInfo((prevUserInfo) => ({
+      ...prevUserInfo,
+      teas_drunken: prevUserInfo.teas_drunken + 1,
+    }));
   }
-
+  
   async function counterDown() {
     counter('down')
-    document.getElementById('Counter').innerHTML = +document.getElementById('Counter').innerHTML - 1;
+    setUserInfo((prevUserInfo) => ({
+      ...prevUserInfo,
+      teas_drunken: prevUserInfo.teas_drunken - 1,
+    }));
   }
 
   return (
@@ -18,7 +24,7 @@ const Information = ({ className, text, arrows }) => {
       {arrows ? (
         <>
           <img src={Up} alt="Up" onClick={counterDown} />
-          <h4 id='Counter'>{text}</h4>
+          <h4 id='Counter'>{userInfo.teas_drunken}</h4>
           <img src={Up} alt="Down" onClick={counterUp} />
         </>
       ) : (

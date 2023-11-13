@@ -1,5 +1,4 @@
 const models = require('../models/accountModels.js');
-const jwt = require('jsonwebtoken');
 const client = require('../db');
 const { tokenToUserId } = require('../utils/util.js');
 const db = client.db('teajourney').collection('users');
@@ -163,4 +162,25 @@ async function resetJourney(ctx) {
     }
 }
 
-module.exports = { login, register, changeCounter, getUser, addTea, addBrewTime, markAsFavourite, rateTea, resetJourney }
+async function updateUser(ctx) {
+    try {
+        const { authorization } = ctx.headers;
+        const { name, username, password } = ctx.request.body;
+        const user = await db.findOne({ username });
+        if (user) {
+            ctx.status = 401;
+            ctx.body = { status: 401, message: 'User already exists' };
+            return;
+        }
+        const user_id = tokenToUserId(authorization, SECRET_KEY);
+        const result = await models.updateUser(name, username, password, user_id)
+        ctx.status = 200;
+        ctx.body = { status: 200, result }
+    } catch (error) {
+        ctx.status = 500;
+        ctx.body = { error: error.message };
+        console.log(error);
+    }
+}
+
+module.exports = { login, register, changeCounter, getUser, addTea, addBrewTime, markAsFavourite, rateTea, resetJourney, updateUser }

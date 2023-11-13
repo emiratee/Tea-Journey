@@ -20,7 +20,7 @@ async function getAllFunfacts() {
 
 async function validatePassword(username, password) {
     try {
-        const response = await fetch(`${url}/login`, {
+        const response = await fetch(`${url}/user/account/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ async function validatePassword(username, password) {
 
 async function registerUser(name, username, password) {
     try {
-        const response = await fetch(`${url}/register`, {
+        const response = await fetch(`${url}/user/account/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ async function registerUser(name, username, password) {
 
 async function getUser(token) {
     try {
-        const response = await fetch(`${url}/user`, {
+        const response = await fetch(`${url}/user/account`, {
             method: 'GET',
             headers: {
                 'Authorization': `${token}`

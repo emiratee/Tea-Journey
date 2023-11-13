@@ -3,7 +3,7 @@ import '../../Styles/LoginAlert.css'
 const LoginAlert = () => {
   return (
     <div className="LoginAlert">
-        <h1>Please log in to use this feature</h1>
+        <h1>Please <a href="/login">log in</a> to use this feature</h1>
     </div>
   )
 }

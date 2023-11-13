@@ -10,7 +10,7 @@ import { addBrewedTea, addTeaTime, getAllFunfacts } from '../../apiService';
 
 //TODO: Refactor this crap
 
-const BrewTimer = () => {
+const BrewTimer = ({ userInfo, setUserInfo }) => {
     const [searchedTeas, setSearchedTeas] = useState([]);
     const [funfacts, setFunfacts] = useState([]);
     const [selectedTea, setSelectedTea] = useState();
@@ -29,7 +29,11 @@ const BrewTimer = () => {
 
     useEffect(() => {
         if (selectedTea) {
-            addBrewedTea(selectedTea, token)
+            addBrewedTea(selectedTea, token);
+            setUserInfo((prev) => ({
+                ...prev,
+                brewed_teas: prev.brewed_teas.map((tea) => tea.name === selectedTea.name ? { ...tea, score: tea.score + 1 } : tea),
+            }));
         }
     }, [selectedTea])
 
@@ -70,6 +74,10 @@ const BrewTimer = () => {
 
         if (e.currentTarget.innerText === 'Reset') {
             addTeaTime(selectedTea.brewTime * 60 - countSeconds, token);
+            setUserInfo((prev) => ({
+                ...prev,
+                brewing_time: prev.brewing_time + selectedTea.brewTime * 60 - countSeconds
+            }));
             clearInterval(currentInterval);
             e.currentTarget.innerText = 'Start';
             seconds = selectedTea.brewTime * 60;
@@ -81,6 +89,10 @@ const BrewTimer = () => {
         const interval = setInterval(() => {
             if (seconds === 0) {
                 addTeaTime(selectedTea.brewTime * 60, token)
+                setUserInfo((prev) => ({
+                    ...prev,
+                    brewing_time: prev.brewing_time + selectedTea.brewTime * 60
+                }));
                 clearInterval(interval);
                 document.querySelector('.Timer').innerHTML = '0:00'
             } else {
@@ -145,6 +157,7 @@ const BrewTimer = () => {
                                     </div>
                                     <div className="TeaTimer">
                                         <div className="TimerInformation">
+                                            <span>{selectedTea.name}</span>
                                             <h1 className="Timer">{renderTimer(selectedTea.brewTime)}</h1>
                                             <span>@ {selectedTea.temperature}</span>
                                         </div>
@@ -153,7 +166,6 @@ const BrewTimer = () => {
                                     </div>
                                 </div>
                             </>
-
                         )}
                     </div>
                 </>

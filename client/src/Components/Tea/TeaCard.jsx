@@ -2,16 +2,16 @@ import { useState } from 'react';
 import '../../Styles/TeaCard.css';
 import TeaInformation from './TeaInformation';
 
-const TeaCard = ({ tea, userInfo }) => {
+const TeaCard = ({ tea, userInfo, setUserInfo }) => {
     const [isTeaInformationVisible, setTeaInformationVisible] = useState(false);
 
     function openTeaInformation() {
         setTeaInformationVisible(true);
-      }
+    }
 
     return (
         <>
-            {isTeaInformationVisible && <TeaInformation tea={tea} setTeaInformationVisible={setTeaInformationVisible} userInfo={userInfo} />}
+            {isTeaInformationVisible && <TeaInformation tea={tea} setTeaInformationVisible={setTeaInformationVisible} userInfo={userInfo} setUserInfo={setUserInfo} />}
             <div className='TeaCard' onClick={openTeaInformation}>
                 <div className="Image" style={{ backgroundImage: `url(${tea.image})` }} ></div>
                 <h3>{tea.name}</h3>

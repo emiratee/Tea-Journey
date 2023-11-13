@@ -163,6 +163,9 @@ async function rateTea(name, rating, user_id) {
         { user_id, 'badges.name': 'Tea Enthusiast' },
         { $set: { 'badges.$.unlocked': isTeaEnthusiast } }
     );
+
+    const returnUser = await db.findOne({ user_id }); //for the badges live update
+    return returnUser.badges;
 }
 
 async function resetJourney(user_id) {
@@ -201,6 +204,10 @@ async function resetJourney(user_id) {
     });
     
     return result;
+}
+
+async function updatedUser(name, username, password, user_id) {
+    
 }
 
 

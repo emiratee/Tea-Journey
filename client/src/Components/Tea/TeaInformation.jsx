@@ -26,7 +26,7 @@ const TeaCardStyle = {
   },
 };
 
-const TeaInformation = ({ tea, setTeaInformationVisible, userInfo }) => {
+const TeaInformation = ({ tea, setTeaInformationVisible, userInfo, setUserInfo }) => {
   const [isModalOpen, setIsModalOpen] = useState(true);
   const [isRateModalOpen, setIsRateModalOpen] = useState(false);
   const [star, setStar] = useState(false)
@@ -44,7 +44,10 @@ const TeaInformation = ({ tea, setTeaInformationVisible, userInfo }) => {
   function setFavourite() {
     const token = localStorage.getItem('accessToken')
     markAsFavourite(tea.name, token);
-    document.querySelector('.FavouriteTea').innerHTML = `<h4>${tea.name}</h4>`
+    setUserInfo((prev) => ({
+      ...prev,
+      favourite_tea: tea.name,
+    }));
   }
 
   function openRateModal() {
@@ -117,7 +120,7 @@ const TeaInformation = ({ tea, setTeaInformationVisible, userInfo }) => {
         </Modal>
       </div>
       {isRateModalOpen && (
-        <TeaRatingModal name={tea.name} setIsRateModalOpen={setIsRateModalOpen} setRating={setRating} setStar={setStar} />
+        <TeaRatingModal name={tea.name} setIsRateModalOpen={setIsRateModalOpen} setRating={setRating} setStar={setStar} userInfo={userInfo} setUserInfo={setUserInfo} />
       )}
     </>
   )

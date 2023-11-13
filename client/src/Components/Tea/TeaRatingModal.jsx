@@ -21,18 +21,23 @@ const RatingStyle = {
     }
 };
 
-const TeaRatingModal = ({ name, setIsRateModalOpen, setRating, setStar }) => {
+const TeaRatingModal = ({ name, setIsRateModalOpen, setRating, setStar, userInfo, setUserInfo }) => {
     const [isModalOpen, setIsModalOpen] = useState(true);
     const [hoveredRating, setHoveredRating] = useState(null);
     const [selectedRating, setSelectedRating] = useState(null);
 
-    const handleStarClick = (num) => {
+    const handleStarClick = async (num) => {
         const token = localStorage.getItem('accessToken');
         setSelectedRating(num);
         setRating(`${num}/10`);
         setStar(true);
         closeModal();
-        rateTea(name, num, token)
+        const ratedTea = await rateTea(name, num, token)
+        setUserInfo((prev) => {
+            const updatedReviews = [...prev.reviews.filter((review) => review.name !== name), { name, score: num }];
+            const averageRating = updatedReviews.reduce((sum, review) => sum + review.score, 0) / updatedReviews.length;
+            return { ...prev, badges: ratedTea.result, reviews: updatedReviews, average_rating: isNaN(averageRating) ? 0 : averageRating };
+          });
     };
 
     const handleStarHover = (num) => {
