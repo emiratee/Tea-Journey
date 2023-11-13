@@ -5,7 +5,7 @@ import Close from '../../Assets/close.png';
 import EmptyStar from '../../Assets/star-empty.png'
 import FilledStar from '../../Assets/star-filled.png'
 import { markAsFavourite } from '../../apiService';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TeaRatingModal from './TeaRatingModal';
 
 
@@ -26,11 +26,20 @@ const TeaCardStyle = {
   },
 };
 
-const TeaInformation = ({ tea, setTeaInformationVisible }) => {
+const TeaInformation = ({ tea, setTeaInformationVisible, userInfo }) => {
   const [isModalOpen, setIsModalOpen] = useState(true);
   const [isRateModalOpen, setIsRateModalOpen] = useState(false);
   const [star, setStar] = useState(false)
-  const [rating, setRating] = useState('Rate')
+  const [rating, setRating] = useState('Rate');
+
+  useEffect(() => {
+    const dbRating = userInfo.reviews.find(review => review.name === tea.name);
+
+    if (dbRating) {
+      setStar(true);
+      setRating(`${dbRating.score}/10`);
+    }
+  }, [userInfo.reviews, tea.name]);
 
   function setFavourite() {
     const token = localStorage.getItem('accessToken')

@@ -30,7 +30,6 @@ const Journey = ({ isAuthenticated, userInfo }) => {
     joined_at: 'Now'
   };
 
-  console.log(typeof badges);
 
   return (
     <div className="Frame-Journey">

@@ -134,4 +134,19 @@ async function markAsFavourite(ctx) {
     }
 }
 
-module.exports = { login, register, changeCounter, getUser, addTea, addBrewTime, markAsFavourite }
+async function rateTea(ctx) {
+    try {
+        const { authorization } = ctx.headers;
+        const { name, rating } = ctx.request.body;
+        const user_id = tokenToUserId(authorization, SECRET_KEY);
+        const result = await models.rateTea(name, rating, user_id)
+        ctx.status = 200;
+        ctx.body = { status: 200, result }
+    } catch (error) {
+        ctx.status = 500;
+        ctx.body = { error: error.message };
+        console.log(error);
+    }
+}
+
+module.exports = { login, register, changeCounter, getUser, addTea, addBrewTime, markAsFavourite, rateTea }

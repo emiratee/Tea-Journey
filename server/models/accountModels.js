@@ -108,8 +108,26 @@ async function markAsFavourite(name, user_id) {
     await db.updateOne({ user_id }, { $set: { favourite_tea: name } });
 }
 
+async function rateTea(name, rating, user_id) {
+    const user = await db.findOne({ user_id });
 
-module.exports = { login, register, getUser, changeCounter, addTea, addBrewTime, markAsFavourite }
+    const existingTeaIndex = user.reviews.findIndex(t => t.name === name);
+
+    if (existingTeaIndex === -1) {
+        await db.findOneAndUpdate(
+            { user_id },
+            { $push: { reviews: { name, score: rating } } }
+        );
+    } else {
+        await db.findOneAndUpdate(
+            { user_id, 'reviews.name': name },
+            { $set: { 'reviews.$.score': rating } }
+        );
+    }
+}
+
+
+module.exports = { login, register, getUser, changeCounter, addTea, addBrewTime, markAsFavourite, rateTea }
 
 
 /*

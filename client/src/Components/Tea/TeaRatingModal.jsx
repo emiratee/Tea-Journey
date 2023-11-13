@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 import Close from '../../Assets/close.png'
 import EmptyStar from '../../Assets/star-empty.png';
 import FilledStar from '../../Assets/star-filled.png';
+import { rateTea } from '../../apiService';
 
 const RatingStyle = {
     content: {
@@ -26,10 +27,12 @@ const TeaRatingModal = ({ name, setIsRateModalOpen, setRating, setStar }) => {
     const [selectedRating, setSelectedRating] = useState(null);
 
     const handleStarClick = (num) => {
+        const token = localStorage.getItem('accessToken');
         setSelectedRating(num);
         setRating(`${num}/10`);
         setStar(true);
         closeModal();
+        rateTea(name, num, token)
     };
 
     const handleStarHover = (num) => {

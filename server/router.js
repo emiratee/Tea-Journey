@@ -19,5 +19,6 @@ router.post('/user/tea/counter/:direction', accountController.changeCounter);
 router.post('/user/tea/brew', accountController.addTea);
 router.post('/user/tea/time', accountController.addBrewTime);
 router.post('/user/tea/favourite', accountController.markAsFavourite);
+router.post('/user/tea/rate', accountController.rateTea);
 
 module.exports = router;

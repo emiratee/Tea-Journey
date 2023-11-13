@@ -122,4 +122,20 @@ async function markAsFavourite(name, token) {
     }
 }
 
-module.exports = { getAllTeas, getAllFunfacts, validatePassword, registerUser, getUser, counter, brewTea, brewTime, markAsFavourite };
+async function rateTea(name, rating, token) {
+    try {
+        const response = await fetch(`${url}/user/tea/rate`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            },
+            body: JSON.stringify({ name, rating })
+        });
+        if(response.ok) return await response.json();
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+module.exports = { getAllTeas, getAllFunfacts, validatePassword, registerUser, getUser, counter, brewTea, brewTime, markAsFavourite, rateTea };
