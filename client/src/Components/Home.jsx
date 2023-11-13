@@ -4,6 +4,7 @@ import Explore from "./Explore"
 import BrewTimer from "./BrewTimer/BrewTimer"
 import auth from "../Utils/auth"
 import { useEffect, useState } from "react"
+import Loading from "./Information/Loading"
 
 const Home = ({ isAuthenticated, setIsAuthenticated, userInfo }) => {
     const [currentUserInfo, setCurrentUserInfo] = useState();
@@ -43,7 +44,7 @@ const Home = ({ isAuthenticated, setIsAuthenticated, userInfo }) => {
                 </>
             ) : (
                 <>
-                    <p>Loading...</p>
+                    <Loading />
                 </>
             )}
         </>
