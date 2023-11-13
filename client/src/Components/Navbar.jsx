@@ -1,19 +1,21 @@
 import '../Styles/Navbar.css';
 import Logo from '../Assets/green-tea.png';
-import Account from '../Assets/account.png'
-import auth from '../Utils/auth';
+import Settings from '../Assets/settings.png'
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import Profile from './Profile/Profile';
 
 
-const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
+const Navbar = ({ isAuthenticated, setIsAuthenticated, userInfo }) => {
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false)
   let navigate = useNavigate()
 
   function authenticate() {
     navigate('/login')
   }
 
-  function goToProfile() {
-    auth.logout();
+  function openProfile() {
+    setIsProfileModalOpen(true)
   }
 
   return (
@@ -30,8 +32,11 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
         )}
         {isAuthenticated && (
           <>
-            <img src={Account} alt="Account" onClick={goToProfile} />
+            <img src={Settings} alt="Account" onClick={openProfile} />
           </>
+        )}
+        {isProfileModalOpen && (
+          <Profile setIsProfileModalOpen={setIsProfileModalOpen} />
         )}
       </div>
     </div>

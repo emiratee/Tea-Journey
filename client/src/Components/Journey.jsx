@@ -56,7 +56,7 @@ const Journey = ({ isAuthenticated, userInfo }) => {
             <h3>Most brewed Tea:</h3>
             <Information text={
               Array.isArray(brewed_teas) && brewed_teas.length > 0
-                ? brewed_teas.reduce((max, obj) => (obj.score > max.score ? obj : max), brewed_teas[0]).name
+                ? `${brewed_teas.reduce((max, obj) => (obj.score > max.score ? obj : max), brewed_teas[0]).name} (${brewed_teas.reduce((max, obj) => (obj.score > max.score ? obj : max), brewed_teas[0]).score})`
                 : 'None'
             } />
           </div>
