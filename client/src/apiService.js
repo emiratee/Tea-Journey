@@ -78,7 +78,7 @@ async function counter(direction) {
     }
 }
 
-async function brewTea(tea, token) {
+async function addBrewedTea(tea, token) {
     try {
         const response = await fetch(`${url}/user/tea/brew`, {
             method: 'POST',
@@ -94,9 +94,9 @@ async function brewTea(tea, token) {
     }
 }
 
-async function brewTime(time, token) {
+async function addTeaTime(time, token) {
     try {
-        const response = await fetch(`${url}/user/tea/time/${token}`, {
+        const response = await fetch(`${url}/user/tea/time`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -142,4 +142,4 @@ async function rateTea(name, rating, token) {
     }
 }
 
-module.exports = { getAllTeas, getAllFunfacts, validatePassword, registerUser, getUser, counter, brewTea, brewTime, markAsFavourite, rateTea };
+module.exports = { getAllTeas, getAllFunfacts, validatePassword, registerUser, getUser, counter, addBrewedTea, addTeaTime, markAsFavourite, rateTea };

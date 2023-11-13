@@ -72,7 +72,7 @@
     gap: 5px;
 }
 
-.End {
+.Profile .End {
     position: absolute;
     bottom: 3%;
     right: 3%;
@@ -82,7 +82,7 @@
     gap: 10px;
 }
 
-.End button {
+.Profile .End button {
     font-size: 0.8rem;
     height: 35px;
     width: 100px;
@@ -92,10 +92,10 @@
     cursor: pointer;
 }
 
-.End .Journey button {
+.Profile .End .Journey button {
     background-color: #5a65ea;
 }
 
-.End .Logout button {
+.Profile .End .Logout button {
     background-color: #ea454b;
 }
