@@ -2,7 +2,6 @@ const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
 const jwt = require('jsonwebtoken');
 const client = require('../db');
-const { tokenToUserId } = require('../utils/util');
 const db = client.db('teajourney').collection('users');
 const SECRET_KEY = 'I love tea and I especially love my cat but I do not love it when my tea is cold'
 
@@ -29,7 +28,28 @@ async function register(name, username, password) {
         brewing_time: 0,
         brewed_teas: [],
         teas_drunken: 0,
-        badges: [],
+        badges: [
+            {
+                name: 'Tea Noob', //When having 0 reviews
+                unlocked: true
+            },
+            {
+                name: 'Tea Hater', //When having an average rating below 2
+                unlocked: false
+            },
+            {
+                name: 'Tea Expert', //When having more then 10 reviews
+                unlocked: false
+            },
+            {
+                name: 'Tea Lover', //When having at least on 10 star reviews
+                unlocked: false
+            },
+            {
+                name: 'Tea Enthusiast', //When having the max amount of reviews
+                unlocked: false
+            }
+        ],
         reviews: [],
         average_rating: 0,
         joined_at: Date.now()
@@ -56,13 +76,40 @@ async function getUser(user) {
     }
 }
 
-async function brewTime(time, token) {
-    const user_id = tokenToUserId(token)
+async function changeCounter(direction, user_id) {
+    await client.connect();
+    const res = (direction === 'up') ? await db.findOneAndUpdate({ user_id: user_id }, { $inc: { teas_drunken: + 1 } }, { returnDocument: 'after' }) : await db.updateOne({ user_id }, { $inc: { teas_drunken: - 1 } }, { returnDocument: 'after' });
+    return res
+}
+
+async function addTea(name, user_id) {
+    const user = await db.findOne({ user_id });
+
+    const existingTeaIndex = user.brewed_teas.findIndex(t => t.name === name);
+
+    if (existingTeaIndex === -1) {
+        await db.findOneAndUpdate(
+            { user_id },
+            { $push: { brewed_teas: { name, score: 1 } } }
+        );
+    } else {
+        await db.findOneAndUpdate(
+            { user_id, 'brewed_teas.name': name },
+            { $inc: { 'brewed_teas.$.score': 1 } }
+        );
+    }
+} 
+
+async function addBrewTime(time, user_id) {
     await db.updateOne({ user_id }, { $inc: { brewing_time: time } });
 }
 
+async function markAsFavourite(name, user_id) {
+    await db.updateOne({ user_id }, { $set: { favourite_tea: name } });
+}
 
-module.exports = { login, register, getUser, brewTime }
+
+module.exports = { login, register, getUser, changeCounter, addTea, addBrewTime, markAsFavourite }
 
 
 /*

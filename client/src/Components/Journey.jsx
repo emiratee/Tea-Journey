@@ -21,11 +21,16 @@ const Journey = ({ isAuthenticated, userInfo }) => {
     brewing_time: 0,
     brewed_teas: 'None',
     teas_drunken: 0,
-    badges: 'None',
+    badges: [{
+      name: 'Placeholder',
+      unlocked: true
+    }],
     reviews: 'None',
     average_rating: 0,
     joined_at: 'Now'
   };
+
+  console.log(typeof badges);
 
   return (
     <div className="Frame-Journey">
@@ -42,7 +47,7 @@ const Journey = ({ isAuthenticated, userInfo }) => {
         <div className="Information">
           <div className="Information-Item">
             <h3>Favourite Tea:</h3>
-            <Information text={favourite_tea} />
+            <Information className={'FavouriteTea'} text={favourite_tea} />
           </div>
           <div className="Information-Item">
             <h3>Total brewing Time:</h3>
@@ -63,9 +68,10 @@ const Journey = ({ isAuthenticated, userInfo }) => {
           <div className="Information-Item">
             <h3>Badges:</h3>
             <div className="Badges-List">
-              <Badge img={TestBadge} text={'Tea Lover'} />
+              {/* <Badge img={TestBadge} text={'Tea Lover'} />
               <Badge img={TestBadge} text={'Tea Expert'} />
-              <Badge img={TestBadge} text={'Tea Maker'} />
+              <Badge img={TestBadge} text={'Tea Maker'} /> */}
+              {typeof badges === 'object' && badges.filter(badge => badge.unlocked).map(badge => { return <Badge img={TestBadge} text={badge.name} /> })}
             </div>
           </div>
           <div className="Information-Item">

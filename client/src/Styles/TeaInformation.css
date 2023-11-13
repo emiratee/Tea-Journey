@@ -1,12 +1,76 @@
-.ReactModal__Content--after-open h1 {
-    font-size: 2rem;
-}
-
 .Page {
     border-radius: 20px;
     border-color: none;
     background: linear-gradient(-90deg, #969f77, #d3dbb5);
     padding: 30px;
+}
+
+.Page .Description {
+    position: relative;
+}
+
+.Page .Description .Title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Page .Description .Title img {
+    height: 30px;
+    cursor: pointer;
+}
+
+.Page .Description .Title .End .End-Content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.Page .Description .Title .End .End-Content button {
+    font-size: 0.8rem;
+    height: 35px;
+    width: 125px;
+    background-color: #5a65ea;
+    color: #eeeeee;
+    border-radius: 5px;
+    border: #eeeeee;
+    cursor: pointer;
+}
+
+.Page .Description .Title .End .End-Content .Rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 80px;
+    gap: 5px;
+    background-color: #5a65ea;
+    color: #febe3b;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.Page .Description .Title .End .End-Content .Rating img {
+    height: 20px;
+}
+
+.Page .Description .Information .Information-Item h4 {
+    max-width: 300px;
+}
+
+.Page .Description .Information {
+    padding-block-start: 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 3fr);
+    row-gap: 30px;
+}
+
+.Page .Description .Information .Information-Item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: max-content;
 }
 
 .Page .Description h1 {
@@ -16,8 +80,4 @@
 .Page .Description span {
     font-size: 0.9rem;
     padding-block-end: 15px;
-}
-
-.Page .Description h3 {
-    padding-block: 10px;
 }

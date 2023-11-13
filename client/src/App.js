@@ -14,8 +14,8 @@ function App() {
   useEffect(() => {
     (async () => {
       if (token) {
-        setIsAuthenticated(true);
         const user = await getUser(token);
+        setIsAuthenticated(true);
         setUserInfo(user.user_info);
       }
     })();

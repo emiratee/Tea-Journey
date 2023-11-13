@@ -19,7 +19,7 @@ async function login(ctx) {
         const token = await models.login(user.user_id, password, user.password); //First one is the one the user submits, 2nd one is from db
         if(!token) {
             ctx.status = 401;
-            ctx.body = { status: 401, message: 'Invalid username or password.' }
+            ctx.body = { status: 401, message: 'Invalid password.' }
             return;
         }
         ctx.status = 200;
@@ -55,8 +55,8 @@ async function register(ctx) {
 
 async function getUser(ctx) {
     try {
-        const { token } = ctx.params;
-        const user_id = tokenToUserId(token, SECRET_KEY);
+        const { authorization } = ctx.headers;
+        const user_id = tokenToUserId(authorization, SECRET_KEY);
         const user = await db.findOne({ user_id });
         if(!user) {
             ctx.status = 404;
@@ -73,12 +73,43 @@ async function getUser(ctx) {
     }
 }
 
-async function brewTime(ctx) {
+async function changeCounter(ctx) {
     try {
-        const { token } = ctx.params;
-        const user_id = tokenToUserId(token, SECRET_KEY);
+        if(!ctx.request.body) return new Error();
+        const { authorization } = ctx.headers;
+        const { direction } = ctx.params;
+        const user_id = tokenToUserId(authorization)
+        const result = await models.changeCounter(direction, user_id);
+        ctx.status = 200;
+        ctx.body = { status: 200, result };
+    } catch (error) {
+        ctx.status = 500;
+        ctx.body = { error: error.message };
+        console.log(error);
+    }
+}
+
+async function addTea(ctx) {
+    try {
+        const { name } = ctx.request.body;
+        const { authorization } = ctx.headers;
+        const user_id = tokenToUserId(authorization, SECRET_KEY);
+        const result = await models.addTea(name, user_id);
+        ctx.status = 200;
+        ctx.body = { status: 200, result };
+    } catch (error) {
+        ctx.status = 500;
+        ctx.body = { error: error.message };
+        console.log(error);
+    }
+}
+
+async function addBrewTime(ctx) {
+    try {
+        const { authorization } = ctx.headers;
         const { time } = ctx.request.body;
-        const result = await models.brewTime(time, token)
+        const user_id = tokenToUserId(authorization, SECRET_KEY);
+        const result = await models.addBrewTime(time, user_id)
         ctx.status = 200;
         ctx.body = { status: 200, result }
     } catch (error) {
@@ -88,4 +119,19 @@ async function brewTime(ctx) {
     }
 }
 
-module.exports = { login, register, getUser, brewTime }
+async function markAsFavourite(ctx) {
+    try {
+        const { authorization } = ctx.headers;
+        const { name } = ctx.request.body;
+        const user_id = tokenToUserId(authorization, SECRET_KEY);
+        const result = await models.markAsFavourite(name, user_id)
+        ctx.status = 200;
+        ctx.body = { status: 200, result }
+    } catch (error) {
+        ctx.status = 500;
+        ctx.body = { error: error.message };
+        console.log(error);
+    }
+}
+
+module.exports = { login, register, changeCounter, getUser, addTea, addBrewTime, markAsFavourite }

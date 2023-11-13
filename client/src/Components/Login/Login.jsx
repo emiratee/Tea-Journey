@@ -6,7 +6,7 @@ const Login = ({ setIsAuthenticated }) => {
     let navigate = useNavigate()
     
     async function login(e) {
-        e.preventDefault()
+        e.preventDefault();
         const response = await validatePassword(e.currentTarget.username.value, e.currentTarget.password.value);
 
         if(response.status === 200) {
