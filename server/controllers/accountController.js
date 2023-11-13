@@ -149,4 +149,18 @@ async function rateTea(ctx) {
     }
 }
 
-module.exports = { login, register, changeCounter, getUser, addTea, addBrewTime, markAsFavourite, rateTea }
+async function resetJourney(ctx) {
+    try {
+        const { authorization } = ctx.headers;
+        const user_id = tokenToUserId(authorization, SECRET_KEY);
+        const result = await models.resetJourney(user_id)
+        ctx.status = 200;
+        ctx.body = { status: 200, result }
+    } catch (error) {
+        ctx.status = 500;
+        ctx.body = { error: error.message };
+        console.log(error);
+    }
+}
+
+module.exports = { login, register, changeCounter, getUser, addTea, addBrewTime, markAsFavourite, rateTea, resetJourney }

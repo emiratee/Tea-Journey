@@ -142,4 +142,19 @@ async function rateTea(name, rating, token) {
     }
 }
 
-module.exports = { getAllTeas, getAllFunfacts, validatePassword, registerUser, getUser, counter, addBrewedTea, addTeaTime, markAsFavourite, rateTea };
+async function resetJourney(token) {
+    try {
+        const response = await fetch(`${url}/user/journey/reset`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            }
+        });
+        if(response.ok) return await response.json();
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+module.exports = { getAllTeas, getAllFunfacts, validatePassword, registerUser, getUser, counter, addBrewedTea, addTeaTime, markAsFavourite, rateTea, resetJourney };

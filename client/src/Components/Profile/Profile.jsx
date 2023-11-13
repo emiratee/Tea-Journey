@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import auth from '../../Utils/auth';
 import Close from '../../Assets/close.png';
 import { useState } from 'react';
+import { resetJourney } from '../../apiService';
 
 const ProfileStyle = {
   content: {
@@ -31,6 +32,16 @@ const Profile = ({ setIsProfileModalOpen }) => {
   function close() {
     setIsModalOpen(false)
     setIsProfileModalOpen(false);
+  }
+
+  function reset() {
+    const shouldReset = window.confirm('Are you sure you want to reset your journey?');
+
+    if (shouldReset) {
+      const token = localStorage.getItem('accessToken')
+      resetJourney(token);
+      window.location.reload();
+    }
   }
 
   function logout() {
@@ -68,7 +79,7 @@ const Profile = ({ setIsProfileModalOpen }) => {
         </div>
         <div className="End">
           <div className="Journey">
-            <button onClick={logout}>Reset Journey</button>
+            <button onClick={reset}>Reset Journey</button>
           </div>
           <div className="Logout">
             <button onClick={logout}>Log out</button>

@@ -165,8 +165,46 @@ async function rateTea(name, rating, user_id) {
     );
 }
 
+async function resetJourney(user_id) {
+    const result = await db.updateOne({ user_id }, {
+        $set: {
+            favourite_tea: 'None',
+            brewing_time: 0,
+            brewed_teas: [],
+            teas_drunken: 0,
+            badges: [
+                {
+                    name: 'Tea Noob', //When having 0 reviews
+                    unlocked: true
+                },
+                {
+                    name: 'Tea Hater', //When having an average rating below 2
+                    unlocked: false
+                },
+                {
+                    name: 'Tea Expert', //When having more then 10 reviews
+                    unlocked: false
+                },
+                {
+                    name: 'Tea Lover', //When having at least one 10 star reviews
+                    unlocked: false
+                },
+                {
+                    name: 'Tea Enthusiast', //When having the max amount of reviews
+                    unlocked: false
+                }
+            ],
+            reviews: [],
+            average_rating: 0,
+            joined_at: Date.now()
+        }
+    });
+    
+    return result;
+}
 
-module.exports = { login, register, getUser, changeCounter, addTea, addBrewTime, markAsFavourite, rateTea }
+
+module.exports = { login, register, getUser, changeCounter, addTea, addBrewTime, markAsFavourite, rateTea, resetJourney }
 
 
 /*

@@ -3,7 +3,7 @@ import Destination from '../Assets/destination.png';
 import TestBadge from '../Assets/medal.png';
 import Badge from './Information/Badge';
 import Information from './Information/Information';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import LoginAlert from './Login/LoginAlert';
 import * as moment from 'moment';
 
@@ -14,6 +14,7 @@ const Journey = ({ isAuthenticated, userInfo }) => {
       document.querySelector('.Journey').classList.add('JourneyBlurred');
     }
   }, [isAuthenticated]);
+
 
   const { name, username, favourite_tea, brewing_time, brewed_teas, teas_drunken, badges, reviews, average_rating, joined_at } = userInfo ?? {
     username: 'Test',
@@ -30,13 +31,10 @@ const Journey = ({ isAuthenticated, userInfo }) => {
     joined_at: 'Now'
   };
 
-
   return (
     <div className="Frame-Journey">
       {!isAuthenticated && (
-        <>
-          <LoginAlert />
-        </>
+        <LoginAlert />
       )}
       <div className="Journey">
         <div className="Title">
