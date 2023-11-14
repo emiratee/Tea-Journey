@@ -68,7 +68,6 @@ async function counter(direction) {
         const response = await fetch(`${url}/user/tea/counter/${direction}`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
                 'Authorization': `${token}`
             },
         });
