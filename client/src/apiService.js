@@ -1,4 +1,4 @@
-const url = 'http://127.0.0.1:3001';
+const url = process.env.BASE_URL || 'http://127.0.0.1:3001'
 
 async function getAllTeas() {
     try {

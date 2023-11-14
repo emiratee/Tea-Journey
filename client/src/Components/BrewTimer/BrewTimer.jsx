@@ -1,34 +1,34 @@
 import Watch from '../../Assets/watch.png';
 import '../../Styles/BrewTimer.css';
-import teas from '../../Assets/response.json';
 import { useState, useEffect } from 'react';
 import BrewTimerSearchbar from './BrewTimerSearchbar';
 import Back from '../../Assets/back.png';
 import Close from '../../Assets/close.png';
 import Leaves from '../../Assets/green-tea-leaves.png';
-import { addBrewedTea, addTeaTime, getAllFunfacts } from '../../apiService';
+import { addBrewedTea, addTeaTime, getAllFunfacts, getAllTeas } from '../../apiService';
 
 //TODO: Refactor this crap
 
 const BrewTimer = ({ userInfo, setUserInfo }) => {
     const token = localStorage.getItem('accessToken');
+    const [teas, setTeas] = useState([]);
     const [searchedTeas, setSearchedTeas] = useState([]);
     const [funfacts, setFunfacts] = useState([]);
     const [selectedTea, setSelectedTea] = useState();
     const [currentInterval, setCurrentInterval] = useState();
-    const [funfact, setFunfact] = useState('');
-    const [trigger, setTrigger] = useState(false);
-    const [countSeconds, setCountSeconds] = useState()
+    const [countSeconds, setCountSeconds] = useState();
+    const [timerDisplay, setTimerDisplay] = useState('none');
+    const [randomFunfact, setRandomFunfact] = useState('Tea enthusiasts: Water whisperers and herbal sorcerers.');
 
     useEffect(() => {
         (async () => {
             const data = await getAllFunfacts();
             setFunfacts(data);
-            setTrigger(!trigger)
         })();
-    }, [trigger, setFunfacts, setTrigger]);
-
-    useEffect(() => {
+        (async () => {
+            const data = await getAllTeas();
+            setTeas(data);
+        })();
         if (selectedTea) {
             addBrewedTea(selectedTea, token);
             setUserInfo((prev) => ({
@@ -38,27 +38,20 @@ const BrewTimer = ({ userInfo, setUserInfo }) => {
                         tea.name === selectedTea.name ? { ...tea, score: tea.score + 1 } : tea
                     ) : [{ ...selectedTea, score: 1 }],
             }));
-
         }
-    }, [selectedTea, setUserInfo, token])
+    }, [setFunfacts, selectedTea, setUserInfo, token, setTeas]);
 
     useEffect(() => {
-        if (funfacts.length === 0) {
-            setFunfact('')
-            return
-        }
-        setTimeout(() => {
-            setFunfact(funfacts[Math.floor(Math.random() * funfacts.length)].fact);
+        const intervalId = setInterval(() => {
+          const fact = getRandomFunfact();
+          setRandomFunfact(fact);
         }, 5000);
-
-    }, [trigger, funfacts]);
+    
+        return () => clearInterval(intervalId);
+      }, [funfacts]);
 
     function togglePopUp() {
-        if (document.querySelector('.BrewTimer').style.display === 'none') {
-            document.querySelector('.BrewTimer').style.display = 'flex'
-        } else {
-            document.querySelector('.BrewTimer').style.display = 'none'
-        }
+        setTimerDisplay(timerDisplay === 'none' ? 'flex' : 'none')
     }
 
     function searchTea(name) {
@@ -113,6 +106,9 @@ const BrewTimer = ({ userInfo, setUserInfo }) => {
         e.currentTarget.innerText = 'Reset';
     }
 
+    function getRandomFunfact() {
+        return funfacts[Math.floor(Math.random() * funfacts.length)].fact;
+    }
 
     function back() {
         setSelectedTea();
@@ -127,7 +123,7 @@ const BrewTimer = ({ userInfo, setUserInfo }) => {
                     <div className='BrewTimerButton'>
                         <img src={Watch} alt="Watch" onClick={togglePopUp} />
                     </div>
-                    <div className="BrewTimer" style={{ display: 'none' }}>
+                    <div className="BrewTimer" style={{ display: timerDisplay }}>
                         {!selectedTea && (
                             <>
                                 <h1>Brew Timer</h1>
@@ -165,7 +161,7 @@ const BrewTimer = ({ userInfo, setUserInfo }) => {
                                             <span>@ {selectedTea.temperature}</span>
                                         </div>
                                         <button type="submit" name='button' onClick={toggleTimer}>Start</button>
-                                        <h4 className="Hint">{funfact}</h4>
+                                        <h4 className="Hint">{randomFunfact}</h4>
                                     </div>
                                 </div>
                             </>

@@ -6,6 +6,7 @@ import auth from './Utils/auth';
 import { getUser } from './apiService';
 
 function App() {
+  //TODO: convert to context (?)
   const initialState = auth.isAuthenticated();
   const [isAuthenticated, setIsAuthenticated] = useState(initialState);
   const [userInfo, setUserInfo] = useState();
