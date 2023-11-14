@@ -9,7 +9,7 @@ import LoginAlert from './Login/LoginAlert';
 import { useAuth } from '../Utils/auth';
 
 const Explore = () => {
-    const { authenticated, userInfo, setUserInfo  } = useAuth();
+    const { authenticated } = useAuth();
     const [teas, setTeas] = useState([]);
 
     useEffect(() => {
@@ -37,7 +37,7 @@ const Explore = () => {
         rows: 1,
         slidesPerRow: 2, //2
         autoplay: true,
-        autoplaySpeed: 5000,
+        autoplaySpeed: 7000,
     }
 
     //console.log(userInfo);

@@ -109,10 +109,6 @@ const TeaInformation = ({ tea, setTeaInformationVisible }) => {
                 </div>
               )}
               <div className="Information-Item">
-                <h3>Main ingredients:</h3>
-                <Information text={tea.mainIngredients} />
-              </div>
-              <div className="Information-Item">
                 <h3>Color description:</h3>
                 <Information text={tea.colorDescription} />
               </div>

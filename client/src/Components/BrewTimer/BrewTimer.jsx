@@ -11,7 +11,7 @@ import { useAuth } from '../../Utils/auth';
 //TODO: Refactor this crap
 
 const BrewTimer = () => {
-    const { userInfo, setUserInfo, token } = useAuth();
+    const { setUserInfo, token } = useAuth();
     const [teas, setTeas] = useState([]);
     const [searchedTeas, setSearchedTeas] = useState([]);
     const [funfacts, setFunfacts] = useState([]);
@@ -43,10 +43,14 @@ const BrewTimer = () => {
     }, [setFunfacts, selectedTea, setUserInfo, token, setTeas]);
 
     useEffect(() => {
+        function getRandomFunfact() {
+            return funfacts[Math.floor(Math.random() * funfacts.length)].fact;
+        }
+
         const intervalId = setInterval(() => {
           const fact = getRandomFunfact();
           setRandomFunfact(fact);
-        }, 5000);
+        }, 10000);
     
         return () => clearInterval(intervalId);
       }, [funfacts]);
@@ -107,9 +111,6 @@ const BrewTimer = () => {
         e.currentTarget.innerText = 'Reset';
     }
 
-    function getRandomFunfact() {
-        return funfacts[Math.floor(Math.random() * funfacts.length)].fact;
-    }
 
     function back() {
         setSelectedTea();
