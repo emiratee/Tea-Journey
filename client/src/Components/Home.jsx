@@ -38,9 +38,11 @@ const Home = ({ isAuthenticated, setIsAuthenticated, userInfo }) => {
                     <nav>
                         <Navbar isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} userInfo={currentUserInfo} setUserInfo={setCurrentUserInfo} />
                     </nav>
-                    <Journey isAuthenticated={isAuthenticated} userInfo={currentUserInfo} setUserInfo={setCurrentUserInfo} />
-                    <Explore isAuthenticated={isAuthenticated} userInfo={currentUserInfo} setUserInfo={setCurrentUserInfo} />
-                    <BrewTimer userInfo={currentUserInfo} setUserInfo={setCurrentUserInfo} />
+                    <div className="Home">
+                        <Journey isAuthenticated={isAuthenticated} userInfo={currentUserInfo} setUserInfo={setCurrentUserInfo} />
+                        <Explore isAuthenticated={isAuthenticated} userInfo={currentUserInfo} setUserInfo={setCurrentUserInfo} />
+                        <BrewTimer userInfo={currentUserInfo} setUserInfo={setCurrentUserInfo} />
+                    </div>
                 </>
             ) : (
                 <>

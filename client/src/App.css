@@ -1,19 +1,9 @@
 .App {
-    background-color: #48454a;
+    background: linear-gradient(#386641, #6a994e);
+    /* background: linear-gradient(360deg, #6a994e, #386641); */
     height: 100%;
 }
 
-.Tea {
-    padding: 40px;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    width: 100vw;
-    overflow: scroll;
-}
-
-.Tea::-webkit-scrollbar {
-    display: none;
+.Blurred {
+    filter: blur(4px);
 }

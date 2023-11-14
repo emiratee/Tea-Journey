@@ -20,6 +20,7 @@ const TeaCardStyle = {
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
+    background: 'linear-gradient(90deg, #73a86d, #aedc8a)',
     transform: 'translate(-50%, -50%)',
     height: 'calc(100vh - 30%)',
     width: 'calc(100vw - 16%)'
@@ -33,6 +34,7 @@ const TeaInformation = ({ tea, setTeaInformationVisible, userInfo, setUserInfo }
   const [rating, setRating] = useState('Rate');
 
   useEffect(() => {
+    if (isModalOpen) document.querySelector('.Home').classList.add('Blurred')
     const dbRating = userInfo.reviews.find(review => review.name === tea.name);
 
     if (dbRating) {
@@ -57,13 +59,14 @@ const TeaInformation = ({ tea, setTeaInformationVisible, userInfo, setUserInfo }
   function close() {
     setIsModalOpen(false);
     setTeaInformationVisible(false);
+    document.querySelector('.Home').classList.remove('Blurred');
   }
 
   return (
     <>
       <div className='TeaInformation' id={tea._id}>
         <Modal className={'Page'} style={TeaCardStyle} isOpen={isModalOpen} >
-          <div className="Description">
+          <div className="Description" id='TeaInformationDescription'>
             <div className="Title">
               <div className="Start">
                 <h1>{tea.name}</h1>
