@@ -1,0 +1,63 @@
+.Frame-Explore {
+    border: 3px solid #ffffff;
+    border-radius: 10px;
+    width: calc(100% - 80px);
+    height: 500px;
+    margin: 40px;
+}
+
+.ExploreBlurred {
+    filter: blur(10px);
+}
+
+.Explore .Title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-inline-start: 15px;
+}
+
+.Explore .Title img {
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+.Explore .Title h1 {
+    color: #fff;
+    padding: 20px;
+}
+
+.Explore .Cards {
+    padding-left: 60px;
+}
+
+.slick-dots {
+    background-color: var(--background-colour-home2);
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.slick-dots li {
+    background-color: var(--background-colour-home2);
+    margin: 0 5px;
+}
+
+.slick-dots li button {
+    width: 10px;
+    height: 10px;
+    border: 2px solid #555;
+    background: transparent;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.slick-dots li.slick-active button {
+    transform: scale(1.7);
+}
+
+.slick-dots li button:before {
+    color: #fff !important;
+}

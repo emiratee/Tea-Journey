@@ -1,0 +1,19 @@
+#Information {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 7px;
+}
+
+#Information img {
+    width: 13px;
+    height: 13px;
+}
+
+#Information img:hover {
+    cursor: pointer;
+}
+
+#Information img:nth-child(1) {
+    transform: rotate(180deg);
+}

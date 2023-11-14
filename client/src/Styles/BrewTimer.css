@@ -1,0 +1,159 @@
+.BrewTimerButton {
+    position: fixed;
+    bottom: 6%;
+    right: 3%;
+    border: 1px solid white;
+    border-radius: 10px;
+    border-color: #5caa48;
+    background-color: #5caa48;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.BrewTimerButton:hover {
+    cursor: pointer;
+}
+
+.BrewTimerButton img {
+    width: 40px;
+    margin-left: 5px;
+}
+
+.BrewTimer {
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: #d7d9d7;
+    position: fixed;
+    flex-flow: column nowrap;
+    text-align: center;
+    bottom: 4%;
+    right: 2%;
+    width: 400px;
+    height: 300px;
+    padding-inline: 10px;
+    gap: 10px;
+}
+
+.BrewTimer .Searchbar {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.BrewTimer h1 {
+    padding-block-start: 10px;
+}
+
+.BrewTimer .Searchbar .Search {
+    display: flex;
+    flex-direction: column;
+}
+
+.BrewTimer .Searchbar .Search label {
+    padding-block-start: 10px;
+    padding-block-end: 5px;
+    text-align: left;
+}
+
+.BrewTimer .Searchbar .Search input {
+    text-indent: 5px;
+    height: 32px;
+    border-radius: 6px;
+    border-style: none;
+    z-index: 999;
+}
+
+.BrewTimer .Searchbar .Search img {
+    align-self: center;
+    padding-block-start: 20px;
+    width: 120px;
+}
+
+.BrewTimer .BrewTimerPage {
+    position: relative;
+}
+
+.BrewTimer .Back img {
+    position: absolute;
+    top: 20px;
+    left: 1%;
+    width: 20px;
+    height: 20px;
+}
+
+.BrewTimer .BrewTimerPage .Close img {
+    position: absolute;
+    top: 20px;
+    right: 1%;
+    width: 20px;
+    height: 20px;
+}
+
+.BrewTimer .Searchbar .Close img {
+    position: absolute;
+    top: -40px; 
+    /* f this shit */
+    right: 1%;
+    width: 20px;
+    height: 20px;
+}
+
+.BrewTimer .Back img:hover, .BrewTimer .Close img:hover {
+    cursor: pointer;
+}
+
+.SearchedTeas {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+    padding-block-start: 20px;
+    padding-block-end: 5px;
+    padding-inline-start: 5px;
+    top: 70px;
+    width: 100%;
+    height: max-content;
+    max-height: 135px;
+    border: 1px solid #d7d9d7;
+    border-style: none;
+    background-color: #e9e9e9;
+    border-radius: 0 0 6px 6px;
+}
+
+.TeaTimer {
+    padding-block-start: 10px;
+}
+
+.TeaTimer .Timer {
+    font-size: 5rem;
+}
+
+.TeaTimer button {
+    height: 40px;
+    width: 25%;
+    border-radius: 10px;
+    border-style: none;
+    font-size: 18px;
+}
+
+.TeaTimer button:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+.TeaTimer h4 {
+    padding-block-start: 15px;
+}
+
+.TeaTimer .TimerInformation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+}

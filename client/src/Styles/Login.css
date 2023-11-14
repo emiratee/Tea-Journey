@@ -1,0 +1,73 @@
+.Login {
+    min-height: 100vh;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Login-Form {
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 375px;
+    height: 450px;
+}
+
+.Login-Form h1 {
+    padding-block-start: 15px;
+    padding-block-end: 50px;
+}
+
+.Login-Form .Username, .Login-Form .Password {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.Login-Form label {
+    font-size: 1.3rem;
+}
+
+.Login-Form input {
+    border-radius: 10px;
+    border-style: none;
+    height: 40px;
+    width: 225px;
+    font-size: 1.1rem;
+    text-indent: 5px;
+}
+
+.Login-Form .Validate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-block-start: 50px;
+}
+
+.Login-Form .Validate button {
+    width: 125px;
+    height: 40px;
+    border-radius: 10px;
+    border-style: none;
+    color: #fff;
+    background-color: #5caa48;
+    font-size: 1.2rem;
+}
+
+.Login-Form .Validate button:hover, .Login-Form .Validate span:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+    opacity: 0.9;
+}
+
+.Login-Form .Validate span {
+    padding-block-start: 5px;
+    text-decoration: underline white;
+}

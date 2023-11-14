@@ -1,0 +1,16 @@
+.Loading {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.Loading h1 {
+    font-size: 4rem;
+}
+
+.Loading img {
+    height: 60px;
+}
