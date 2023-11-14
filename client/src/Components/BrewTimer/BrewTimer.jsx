@@ -32,8 +32,12 @@ const BrewTimer = ({ userInfo, setUserInfo }) => {
             addBrewedTea(selectedTea, token);
             setUserInfo((prev) => ({
                 ...prev,
-                brewed_teas: prev.brewed_teas.map((tea) => tea.name === selectedTea.name ? { ...tea, score: tea.score + 1 } : tea),
+                brewed_teas: prev.brewed_teas.length > 0 ?
+                    prev.brewed_teas.map((tea) =>
+                        tea.name === selectedTea.name ? { ...tea, score: tea.score + 1 } : tea
+                    ) : [{ ...selectedTea, score: 1 }],
             }));
+
         }
     }, [selectedTea])
 

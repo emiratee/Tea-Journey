@@ -23,7 +23,7 @@ const TeaCardStyle = {
     background: 'linear-gradient(90deg, #73a86d, #aedc8a)',
     transform: 'translate(-50%, -50%)',
     height: 'calc(100vh - 30%)',
-    width: 'calc(100vw - 16%)'
+    width: 'calc(100vw - 14%)'
   },
 };
 
@@ -78,7 +78,7 @@ const TeaInformation = ({ tea, setTeaInformationVisible, userInfo, setUserInfo }
                     <img src={!star ? EmptyStar : FilledStar} alt="Empty" />
                     <h4>{rating}</h4>
                   </div>
-                  <button onClick={setFavourite}>Mark as favourite</button>
+                  {userInfo.favourite_tea === tea.name ? <button style={{ backgroundColor: '#5caa48' }}>Current favourite</button> : <button onClick={setFavourite}>Mark as favourite</button>}
                   <img src={Close} alt="Close" onClick={close} />
                 </div>
               </div>

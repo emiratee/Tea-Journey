@@ -10,7 +10,6 @@
     filter: blur(10px);
 }
 
-
 .Explore .Title {
     display: flex;
     flex-direction: row;
@@ -56,7 +55,7 @@
 }
 
 .slick-dots li.slick-active button {
-    background: #555;
+    transform: scale(1.7);
 }
 
 .slick-dots li button:before {

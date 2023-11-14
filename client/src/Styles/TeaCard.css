@@ -12,6 +12,7 @@
     margin-bottom: 40px;
 }
 
+/*
 .Dots {
     display: flex;
     flex-direction: row;
@@ -26,6 +27,7 @@
     background-color: #adff2f;
     box-sizing: border-box;
 }
+*/
 
 .TeaCard:hover {
     cursor: pointer;

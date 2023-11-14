@@ -70,11 +70,11 @@ const Journey = ({ isAuthenticated, userInfo, setUserInfo }) => {
             </div>
           </div>
           <div className="Information-Item">
-            <h3>Reviews:</h3>
+            <h3>Total ratings:</h3>
             <Information text={`${reviews.length}/42`} />
           </div>
           <div className="Information-Item">
-            <h3>Average review rating:</h3>
+            <h3>Average rating:</h3>
             <Information text={average_rating.toFixed(2)} />
           </div>
           <div className="Information-Item">
