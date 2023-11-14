@@ -16,7 +16,6 @@ const Journey = () => {
     }
   }, [authenticated]);
 
-
   const { name, favourite_tea, brewing_time, brewed_teas, teas_drunken, badges, reviews, average_rating, joined_at } = userInfo;
 
   return (

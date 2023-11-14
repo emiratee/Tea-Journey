@@ -10,7 +10,8 @@ function App() {
     (async () => {
       if (authenticated) await login();
     })();
-  }, [authenticated, login]);
+  }, [authenticated]);
+
 
   return (
     <>
