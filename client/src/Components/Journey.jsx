@@ -6,14 +6,15 @@ import Information from './Information/Information';
 import { useEffect } from 'react';
 import LoginAlert from './Login/LoginAlert';
 import * as moment from 'moment';
+import { useAuth } from '../Utils/auth';
 
-const Journey = ({ isAuthenticated, userInfo, setUserInfo }) => {
+const Journey = ({ userInfo, setUserInfo }) => {
+  const { authenticated } = useAuth();
   useEffect(() => {
-    const token = localStorage.getItem('accessToken')
-    if (!token) {
+    if (!authenticated) {
       document.querySelector('.Journey').classList.add('JourneyBlurred');
     }
-  }, [isAuthenticated]);
+  }, [authenticated]);
 
 
   const { name, favourite_tea, brewing_time, brewed_teas, teas_drunken, badges, reviews, average_rating, joined_at } = userInfo ?? {
@@ -34,7 +35,7 @@ const Journey = ({ isAuthenticated, userInfo, setUserInfo }) => {
 
   return (
     <div className="Frame-Journey">
-      {!isAuthenticated && (
+      {!authenticated && (
         <LoginAlert />
       )}
       <div className="Journey">

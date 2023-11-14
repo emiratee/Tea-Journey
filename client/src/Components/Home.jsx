@@ -4,12 +4,13 @@ import Explore from "./Explore"
 import BrewTimer from "./BrewTimer/BrewTimer"
 import { useEffect, useState } from "react"
 import Loading from "./Information/Loading"
+import { useAuth } from "../Utils/auth"
 
-const Home = ({ isAuthenticated, setIsAuthenticated, userInfo }) => {
+const Home = ({ userInfo }) => {
+    const { authenticated } = useAuth()
     const [currentUserInfo, setCurrentUserInfo] = useState();
     useEffect(() => {
-        const token = localStorage.getItem('accessToken');
-        if (!token) {
+        if (!authenticated) {
             setCurrentUserInfo({
                 username: 'Test',
                 favourite_tea: 'None',
@@ -28,18 +29,19 @@ const Home = ({ isAuthenticated, setIsAuthenticated, userInfo }) => {
         if (userInfo) {
             setCurrentUserInfo(userInfo)
         }
-    }, [userInfo]);
+    }, [userInfo, authenticated]);
+
 
     return (
         <>
             {currentUserInfo ? (
                 <>
                     <nav>
-                        <Navbar isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} userInfo={currentUserInfo} setUserInfo={setCurrentUserInfo} />
+                        <Navbar userInfo={currentUserInfo} setUserInfo={setCurrentUserInfo} />
                     </nav>
                     <div className="Home">
-                        <Journey isAuthenticated={isAuthenticated} userInfo={currentUserInfo} setUserInfo={setCurrentUserInfo} />
-                        <Explore isAuthenticated={isAuthenticated} userInfo={currentUserInfo} setUserInfo={setCurrentUserInfo} />
+                        <Journey userInfo={currentUserInfo} setUserInfo={setCurrentUserInfo} />
+                        <Explore userInfo={currentUserInfo} setUserInfo={setCurrentUserInfo} />
                         <BrewTimer userInfo={currentUserInfo} setUserInfo={setCurrentUserInfo} />
                     </div>
                 </>

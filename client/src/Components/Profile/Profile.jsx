@@ -1,6 +1,6 @@
 import '../../Styles/Profile.css'
 import Modal from 'react-modal';
-import auth from '../../Utils/auth';
+import auth, { useAuth } from '../../Utils/auth';
 import Close from '../../Assets/close.png';
 import { useEffect, useState } from 'react';
 import { resetJourney, updateUser } from '../../apiService';
@@ -26,6 +26,7 @@ const ProfileStyle = {
 };
 
 const Profile = ({ setIsProfileModalOpen, userInfo, setUserInfo }) => {
+  const { logout } = useAuth();
   const [isModalOpen, setIsModalOpen] = useState(true);
 
   useEffect(() => {
@@ -68,9 +69,6 @@ const Profile = ({ setIsProfileModalOpen, userInfo, setUserInfo }) => {
     }
   }
 
-  function logout() {
-    auth.logout()
-  }
 
   return (
     <Modal style={ProfileStyle} isOpen={isModalOpen} >
@@ -106,7 +104,7 @@ const Profile = ({ setIsProfileModalOpen, userInfo, setUserInfo }) => {
             <button onClick={reset}>Reset Journey</button>
           </div>
           <div className="Logout">
-            <button onClick={logout}>Log out</button>
+            <button onClick={() => { logout() }}>Log out</button>
           </div>
         </div>
       </div>

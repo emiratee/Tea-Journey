@@ -6,8 +6,10 @@ import { useState, useEffect } from 'react';
 import { getAllTeas } from '../apiService';
 import TeaCard from './Tea/TeaCard';
 import LoginAlert from './Login/LoginAlert';
+import { useAuth } from '../Utils/auth';
 
-const Explore = ({ isAuthenticated, userInfo, setUserInfo }) => {
+const Explore = ({ userInfo, setUserInfo }) => {
+    const { authenticated } = useAuth();
     const [teas, setTeas] = useState([]);
 
     useEffect(() => {
@@ -18,11 +20,10 @@ const Explore = ({ isAuthenticated, userInfo, setUserInfo }) => {
     }, []);
 
     useEffect(() => {
-        const token = localStorage.getItem('accessToken')
-        if (!token) {
+        if (!authenticated) {
             document.querySelector('.Explore').classList.add('ExploreBlurred');
         }
-    }, [isAuthenticated]);
+    }, [authenticated]);
 
     const settings = {
         dots: true,
@@ -39,10 +40,11 @@ const Explore = ({ isAuthenticated, userInfo, setUserInfo }) => {
         autoplaySpeed: 5000,
     }
 
+    //console.log(userInfo);
 
     return (
         <div className="Frame-Explore">
-            {!isAuthenticated && (
+            {!authenticated && (
                 <LoginAlert />
             )}
             <div className="Explore">

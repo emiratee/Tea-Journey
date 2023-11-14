@@ -5,12 +5,12 @@ import Login from './Login/Login';
 import Profile from './Profile/Profile';
 import Register from './Register/Register';
 
-const Dashboard =({ isAuthenticated, setIsAuthenticated, userInfo }) => {
+const Dashboard =({ userInfo }) => {
     const element = useRoutes([
         { path: '/', element: <Navigate to={'/dashboard'} /> },
-        { path: '/dashboard', element: <Home isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} userInfo={userInfo} /> },
-        { path: '/login', element: <Login setIsAuthenticated={setIsAuthenticated} /> },
-        { path: '/register', element: <Register setIsAuthenticated={setIsAuthenticated} /> },
+        { path: '/dashboard', element: <Home userInfo={userInfo} /> },
+        { path: '/login', element: <Login /> },
+        { path: '/register', element: <Register /> },
         { path: '/profile', element: <Profile /> },
         { path: '*', element: <ErrorPage /> }
     ])

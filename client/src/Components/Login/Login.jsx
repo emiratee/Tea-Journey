@@ -1,17 +1,20 @@
 import '../../Styles/Login.css';
 import { useNavigate } from 'react-router-dom';
 import { validatePassword } from '../../apiService';
+import { useAuth } from '../../Utils/auth';
 
-const Login = ({ setIsAuthenticated }) => {
-    let navigate = useNavigate()
+const Login = () => {
+    const { authenticated, login, setToken } = useAuth();
+    const navigate = useNavigate();
     
-    async function login(e) {
+    async function handleLogin(e) {
         e.preventDefault();
         const response = await validatePassword(e.currentTarget.username.value, e.currentTarget.password.value);
 
         if(response.status === 200) {
-            setIsAuthenticated(true);
             localStorage.setItem('accessToken', response.token)
+            setToken(response.token);
+            login();
             navigate('/dashboard');
         } else {
             e.target.username.value = '';
@@ -26,7 +29,7 @@ const Login = ({ setIsAuthenticated }) => {
 
     return (
         <div className="Login">
-            <form className="Login-Form" onSubmit={login}>
+            <form className="Login-Form" onSubmit={handleLogin}>
                 <h1>Login</h1>
                 <div className="Username">
                     <label htmlFor="username">Username:</label>
