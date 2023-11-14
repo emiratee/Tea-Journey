@@ -78,8 +78,8 @@ const Journey = ({ isAuthenticated, userInfo, setUserInfo }) => {
             <Information text={average_rating.toFixed(2)} />
           </div>
           <div className="Information-Item">
-            <h3>Placeholder</h3>
-            <Information text={'Placeholder'} />
+            <h3>Best rated tea:</h3>
+            <Information text={userInfo.reviews.reduce((max, obj) => (obj.score > max.score ? obj : max), userInfo.reviews[0]).name} />
           </div>
           <div className="Information-Item">
             <h3>Placeholder</h3>
