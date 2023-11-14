@@ -1,9 +1,0 @@
-.App {
-    background: linear-gradient(#386641, #6a994e);
-    /* background: linear-gradient(360deg, #6a994e, #386641); */
-    height: 100%;
-}
-
-.Blurred {
-    filter: blur(4px);
-}
