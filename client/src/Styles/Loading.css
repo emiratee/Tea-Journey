@@ -1,6 +1,7 @@
 .Loading {
     height: 100vh;
     width: 100vw;
+    background: linear-gradient(#386641, #6a994e);
     display: flex;
     align-items: center;
     justify-content: center;

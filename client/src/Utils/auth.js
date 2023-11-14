@@ -30,9 +30,11 @@ export const AuthProvider = ({ children }) => {
 
     const login = async () => {
         setAuthenticated(true);
-        const user = await getUser(accessToken);
-        setUserInfo(user.user_info);
-        setLoading(false);
+        if(accessToken) {
+            const user = await getUser(accessToken);
+            setUserInfo(user.user_info);
+            setLoading(false);
+        }
     };
 
     const logout = () => {
@@ -41,9 +43,7 @@ export const AuthProvider = ({ children }) => {
         window.location.reload();
     };
 
-    const setToken = (token) => {
-        setAccessToken(token);
-    };
+    const setToken = (token) => setAccessToken(token);
 
     const token = accessToken;
 

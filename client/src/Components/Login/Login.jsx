@@ -4,7 +4,7 @@ import { validatePassword } from '../../apiService';
 import { useAuth } from '../../Utils/auth';
 
 const Login = () => {
-    const { authenticated, login, setToken } = useAuth();
+    const { login, setToken } = useAuth();
     const navigate = useNavigate();
     
     async function handleLogin(e) {

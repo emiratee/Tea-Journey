@@ -5,7 +5,6 @@ import Dashboard from './Components/Dashboard';
 import { useAuth } from './Utils/auth';
 
 function App() {
-  //TODO: convert to context (?)
   const { authenticated, login } = useAuth();
   useEffect(() => {
     (async () => {
