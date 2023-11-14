@@ -11,6 +11,7 @@ import { addBrewedTea, addTeaTime, getAllFunfacts } from '../../apiService';
 //TODO: Refactor this crap
 
 const BrewTimer = ({ userInfo, setUserInfo }) => {
+    const token = localStorage.getItem('accessToken');
     const [searchedTeas, setSearchedTeas] = useState([]);
     const [funfacts, setFunfacts] = useState([]);
     const [selectedTea, setSelectedTea] = useState();
@@ -25,7 +26,7 @@ const BrewTimer = ({ userInfo, setUserInfo }) => {
             setFunfacts(data);
             setTrigger(!trigger)
         })();
-    }, []);
+    }, [trigger, setFunfacts, setTrigger]);
 
     useEffect(() => {
         if (selectedTea) {
@@ -39,7 +40,7 @@ const BrewTimer = ({ userInfo, setUserInfo }) => {
             }));
 
         }
-    }, [selectedTea])
+    }, [selectedTea, setUserInfo, token])
 
     useEffect(() => {
         if (funfacts.length === 0) {
@@ -50,7 +51,7 @@ const BrewTimer = ({ userInfo, setUserInfo }) => {
             setFunfact(funfacts[Math.floor(Math.random() * funfacts.length)].fact);
         }, 5000);
 
-    }, [trigger, funfact]);
+    }, [trigger, funfacts]);
 
     function togglePopUp() {
         if (document.querySelector('.BrewTimer').style.display === 'none') {
@@ -118,8 +119,6 @@ const BrewTimer = ({ userInfo, setUserInfo }) => {
         setSearchedTeas([]);
         clearInterval(currentInterval);
     }
-
-    const token = localStorage.getItem('accessToken');
 
     return (
         <>

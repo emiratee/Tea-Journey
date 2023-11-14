@@ -32,7 +32,7 @@ const TeaRatingModal = ({ name, setIsRateModalOpen, setRating, setStar, userInfo
 
     useEffect(() => {
         if (isModalOpen) document.getElementById('TeaInformationDescription').classList.add('Blurred');
-    });
+    }, [isModalOpen]);
 
     const handleStarClick = async (num) => {
         const token = localStorage.getItem('accessToken');

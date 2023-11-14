@@ -2,7 +2,6 @@ import Navbar from "./Navbar"
 import Journey from "./Journey"
 import Explore from "./Explore"
 import BrewTimer from "./BrewTimer/BrewTimer"
-import auth from "../Utils/auth"
 import { useEffect, useState } from "react"
 import Loading from "./Information/Loading"
 

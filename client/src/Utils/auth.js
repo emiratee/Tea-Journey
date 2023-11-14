@@ -13,11 +13,6 @@ class Auth {
         this.authenticated = false;
         localStorage.removeItem('accessToken');
         window.location.reload(); //Work around so I dont have to set everything to default
-        //TODO: implement
-        /*
-        document.querySelector('.Journey').classList.add('JourneyBlurred');
-        document.querySelector('.Explore').classList.add('ExploreBlurred');
-        */
     }
 
     isAuthenticated() {

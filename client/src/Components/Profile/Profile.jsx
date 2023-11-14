@@ -2,13 +2,16 @@ import '../../Styles/Profile.css'
 import Modal from 'react-modal';
 import auth from '../../Utils/auth';
 import Close from '../../Assets/close.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { resetJourney, updateUser } from '../../apiService';
 
 const ProfileStyle = {
+  overlay: {
+    backgroundColor: 'transparent',
+  },
   content: {
     position: 'fixed',
-    background: 'linear-gradient(-90deg, #969f77, #968f54)',
+    background: 'linear-gradient(135deg, #6a994e, #386641)',
     top: '50%',
     left: '50%',
     right: 'auto',
@@ -23,7 +26,11 @@ const ProfileStyle = {
 };
 
 const Profile = ({ setIsProfileModalOpen, userInfo, setUserInfo }) => {
-  const [isModalOpen, setIsModalOpen] = useState(true)
+  const [isModalOpen, setIsModalOpen] = useState(true);
+
+  useEffect(() => {
+    if (isModalOpen) document.querySelector('.Home').classList.add('Blurred');
+  })
 
   async function update(e) {
     e.preventDefault();
@@ -46,8 +53,9 @@ const Profile = ({ setIsProfileModalOpen, userInfo, setUserInfo }) => {
   }
 
   function close() {
-    setIsModalOpen(false)
+    setIsModalOpen(false);
     setIsProfileModalOpen(false);
+    document.querySelector('.Home').classList.remove('Blurred');
   }
 
   function reset() {

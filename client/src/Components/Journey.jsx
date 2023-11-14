@@ -3,7 +3,7 @@ import Destination from '../Assets/destination.png';
 import TestBadge from '../Assets/medal.png';
 import Badge from './Information/Badge';
 import Information from './Information/Information';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import LoginAlert from './Login/LoginAlert';
 import * as moment from 'moment';
 
@@ -16,7 +16,7 @@ const Journey = ({ isAuthenticated, userInfo, setUserInfo }) => {
   }, [isAuthenticated]);
 
 
-  const { name, username, favourite_tea, brewing_time, brewed_teas, teas_drunken, badges, reviews, average_rating, joined_at } = userInfo ?? {
+  const { name, favourite_tea, brewing_time, brewed_teas, teas_drunken, badges, reviews, average_rating, joined_at } = userInfo ?? {
     name: 'Test',
     username: 'Test',
     favourite_tea: 'None',
@@ -79,7 +79,11 @@ const Journey = ({ isAuthenticated, userInfo, setUserInfo }) => {
           </div>
           <div className="Information-Item">
             <h3>Best rated tea:</h3>
-            <Information text={userInfo.reviews.reduce((max, obj) => (obj.score > max.score ? obj : max), userInfo.reviews[0]).name} />
+            <Information text={
+              Array.isArray(reviews) && reviews.length > 0
+                ? reviews.reduce((max, obj) => (obj.score > max.score ? obj : max), reviews[0]).name
+                : 'None'
+            } />
           </div>
           <div className="Information-Item">
             <h3>Placeholder</h3>

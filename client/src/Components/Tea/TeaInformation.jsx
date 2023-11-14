@@ -41,7 +41,7 @@ const TeaInformation = ({ tea, setTeaInformationVisible, userInfo, setUserInfo }
       setStar(true);
       setRating(`${dbRating.score}/10`);
     }
-  }, [userInfo.reviews, tea.name]);
+  }, [userInfo.reviews, tea.name, isModalOpen]);
 
   function setFavourite() {
     const token = localStorage.getItem('accessToken')
