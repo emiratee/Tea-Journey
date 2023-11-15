@@ -1,9 +1,9 @@
+import { useAuth } from "../Utils/auth"
 import Navbar from "./Navbar"
 import Journey from "./Journey"
 import Explore from "./Explore"
 import BrewTimer from "./BrewTimer/BrewTimer"
 import Loading from "./Information/Loading"
-import { useAuth } from "../Utils/auth"
 
 const Home = () => {
     const { userInfo } = useAuth();
@@ -12,9 +12,7 @@ const Home = () => {
         <>
             {userInfo ? (
                 <>
-                    <nav>
-                        <Navbar />
-                    </nav>
+                    <Navbar />
                     <div className="Home">
                         <Journey />
                         <Explore />
@@ -22,9 +20,7 @@ const Home = () => {
                     </div>
                 </>
             ) : (
-                <>
-                    <Loading />
-                </>
+                <Loading />
             )}
         </>
     )

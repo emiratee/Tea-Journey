@@ -13,27 +13,29 @@ const Navbar = () => {
   let navigate = useNavigate();
 
   return (
-    <div className='Navbar'>
-      <div className="Name">
-        <img src={Logo} alt="TeaJourney Logo" />
-        <h1>TeaJourney</h1>
+    <nav>
+      <div className='Navbar'>
+        <div className="Name">
+          <img src={Logo} alt="TeaJourney Logo" />
+          <h1>TeaJourney</h1>
+        </div>
+        <div className="Account">
+          {!authenticated && (
+            <>
+              <button onClick={() => { navigate('/login') }}>Login</button>
+            </>
+          )}
+          {authenticated && (
+            <>
+              <img src={Settings} alt="Account" onClick={() => { setIsProfileModalOpen(true) }} />
+            </>
+          )}
+          {isProfileModalOpen && (
+            <Profile setIsProfileModalOpen={setIsProfileModalOpen} />
+          )}
+        </div>
       </div>
-      <div className="Account">
-        {!authenticated && (
-          <>
-            <button onClick={() => { navigate('/login') }}>Login</button>
-          </>
-        )}
-        {authenticated && (
-          <>
-            <img src={Settings} alt="Account" onClick={() => { setIsProfileModalOpen(true) }} />
-          </>
-        )}
-        {isProfileModalOpen && (
-          <Profile setIsProfileModalOpen={setIsProfileModalOpen} />
-        )}
-      </div>
-    </div>
+    </nav>
   )
 }
 

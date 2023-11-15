@@ -72,8 +72,8 @@ const Journey = () => {
             } />
           </div>
           <div className="Information-Item">
-            <h3>Placeholder</h3>
-            <Information text={'Placeholder'} />
+            <h3>Super useful tip:</h3>
+            <Information text={'Boil water before making tea'} />
           </div>
           <div className="Information-Item">
             <h3>Joined at:</h3>
