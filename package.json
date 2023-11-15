@@ -1,0 +1,17 @@
+{
+  "name": "tea-journey",
+  "version": "1.0.0",
+  "description": "TeaJourney is a web app that allows you to track your tea journey and provides a bunch of information about all different tea types.",
+  "main": "index.js",
+  "scripts": {
+    "dependencies": "npm run install-server && npm run install-client",
+    "install-server": "cd server && npm install",
+    "install-client": "cd ../client && npm install",
+    "server": "cd server && nodemon index.js",
+    "client": "cd client && npm start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -4,17 +4,10 @@ TeaJourney is a web app that allows you to track your tea journey and provides a
 
 ## Install dependencies
 
-Go into the `/server` folder and run `npm install`;
-Go into the `/client` folder and run `npm install`;
+In the root folder run `npm run dependencies`
 
 ## Start the app
 
-### Backend
+In the root folder run `npm run server` and `npm run client` from two seperate terminals/
 
-Go into `/server` and run `nodemon index.js`;
-
-### Frontend
-
-Go into `/client` and run `npm start`
-
-## Visit the app on http://localhost:3000
+### Visit the app on http://localhost:3000
