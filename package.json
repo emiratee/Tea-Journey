@@ -6,7 +6,7 @@
   "scripts": {
     "dependencies": "npm run install-server && npm run install-client",
     "install-server": "cd server && npm install",
-    "install-client": "cd ../client && npm install",
+    "install-client": "cd client && npm install",
     "server": "cd server && nodemon index.js",
     "client": "cd client && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
