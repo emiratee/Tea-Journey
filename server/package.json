@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "test": "jest "
+  },
   "dependencies": {
     "@koa/cors": "^4.0.0",
     "bcrypt": "^5.1.1",
