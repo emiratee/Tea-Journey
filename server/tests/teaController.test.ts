@@ -1,13 +1,11 @@
 import { getTea, postTea } from '../controllers/teaController';
 import * as teaModels from '../models/teaModels';
 
-// Mock the teaModels module
 jest.mock('../models/teaModels', () => ({
   getTea: jest.fn(),
   postTea: jest.fn(),
 }));
 
-// Helper function to create a mock Koa context
 const createMockCtx = (body?: any) => ({
   request: {
     body: body || null,

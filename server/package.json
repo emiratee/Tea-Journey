@@ -1,4 +1,10 @@
 {
+  "compilerOptions": {
+    "module": "ESNext"
+  },
+  "ts-node": {
+    "esm": true
+  },
   "dependencies": {
     "@koa/cors": "^4.0.0",
     "bcrypt": "^5.1.1",
@@ -8,5 +14,9 @@
     "koa-router": "^12.0.1",
     "mongodb": "^6.2.0",
     "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.13.11",
+    "ts-node": "^10.9.1"
   }
 }

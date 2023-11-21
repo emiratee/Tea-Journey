@@ -1,4 +1,5 @@
 export interface Tea {
+  caffeineLevel: any;
   _id?: string;
   name: string;
   slug: string;

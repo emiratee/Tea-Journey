@@ -5,15 +5,20 @@ export interface User {
   user_id: string;
   name: string;
   username: string;
-  password: string;
+  password?: string;
   favourite_tea: string;
   brewing_time: number;
   brewed_teas: BrewedTea[];
   teas_drunken: number;
-  badges: Badge[];
+  badges: BadgeInterface[];
   reviews: Review[];
   average_rating: number;
   joined_at: number;
+}
+
+export interface UserResponse {
+  status: number;
+  user_info: User;
 }
 
 export interface BrewedTea {
@@ -21,7 +26,7 @@ export interface BrewedTea {
   score: number;
 }
 
-export interface Badge {
+export interface BadgeInterface {
   name: string;
   unlocked: boolean;
 }
@@ -30,3 +35,8 @@ export interface Review {
   name: string;
   score: number;
 }
+
+// export interface Badge {
+//   name: string;
+//   unlocked: boolean;
+// }
