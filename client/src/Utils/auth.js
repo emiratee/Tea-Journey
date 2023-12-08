@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async () => {
         setAuthenticated(true);
-        if(accessToken) {
+        if (accessToken) {
             const user = await getUser(accessToken);
             setUserInfo(user.user_info);
             setLoading(false);

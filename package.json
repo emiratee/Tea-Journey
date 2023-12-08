@@ -4,6 +4,7 @@
   "description": "TeaJourney is a web app that allows you to track your tea journey and provides a bunch of information about all different tea types.",
   "main": "index.js",
   "scripts": {
+    "d": "npm run dependencies",
     "dependencies": "npm run install-server && npm run install-client",
     "install-server": "cd server && npm install",
     "install-client": "cd client && npm install",
