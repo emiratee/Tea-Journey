@@ -1,4 +1,4 @@
-const url = 'https://tea-journey-production.up.railway.app'
+const url = 'https://brief-wine-production.up.railway.app'
 
 async function getAllTeas() {
     try {

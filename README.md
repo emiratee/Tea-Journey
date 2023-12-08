@@ -34,6 +34,8 @@ This command will run the development build of the app and the browser page shou
 ## Tech stack
 
 * React
+* Koa
+* MongoDB
 
 ## Developers
 * Erik Lenzmann [GitHub](https://github.com/emiratee) - [LinkedIn](https://www.linkedin.com/in/erik-lenzmann/)

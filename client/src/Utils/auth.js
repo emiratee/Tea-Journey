@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
     }, [accessToken, setLoading]);
 
     const login = async () => {
-        if(accessToken) {
+        if (accessToken) {
             setAuthenticated(true);
             const user = await getUser(accessToken);
             setUserInfo(user.user_info);
